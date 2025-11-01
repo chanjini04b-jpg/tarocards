@@ -338,19 +338,22 @@ class YesNoTarot {
                     <!-- 카드 이미지 -->
                     <div style="
                         background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-                        border-radius: 15px;
-                        padding: 15px;
-                        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+                        border-radius: 18px;
+                        padding: 20px;
+                        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
                         border: 2px solid rgba(255, 215, 0, 0.3);
+                        flex-shrink: 0;
                     ">
                         <img src="${card.image_url}" 
                              alt="${card.name}" 
                              style="
-                                 max-width: 180px;
-                                 max-height: 280px;
-                                 border-radius: 10px;
-                                 box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+                                 width: 300px;
+                                 height: 200px;
+                                 border-radius: 12px;
+                                 box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
                                  display: block;
+                                 object-fit: cover;
+                                 object-position: center top;
                              " 
                              onerror="console.error('이미지 로드 실패:', '${card.image_url}'); 
                              this.src='images/tarot-cards/CardBacks.jpg'; 
@@ -361,11 +364,13 @@ class YesNoTarot {
                     <!-- 카드 정보 -->
                     <div style="
                         text-align: left;
-                        max-width: 350px;
+                        max-width: 400px;
+                        min-width: 300px;
                         background: rgba(255, 255, 255, 0.08);
-                        border-radius: 15px;
-                        padding: 25px;
+                        border-radius: 18px;
+                        padding: 30px;
                         border: 1px solid rgba(255, 215, 0, 0.2);
+                        flex: 1;
                     ">
                         <h2 style="
                             color: #f0d084;
