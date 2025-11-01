@@ -46,7 +46,9 @@ class TarotCardManager {
         // 이미지 경로가 없는 경우 기본 경로 설정
         this.cards = this.cards.map(card => ({
             ...card,
-            image: card.image || this.generateImagePath(card)
+            image: card.image ? (card.image.startsWith('image2/') ? 
+                'images/tarot-cards/' + card.image.replace('image2/', '') : card.image) : 
+                this.generateImagePath(card)
         }));
     }
 
@@ -56,7 +58,7 @@ class TarotCardManager {
     generateImagePath(card) {
         if (card.arcana === 'Major') {
             const number = card.rank.toString().padStart(2, '0');
-            return `image2/${number}-${card.name_en.replace(/\s+/g, '')}.jpg`;
+            return `images/tarot-cards/${number}-${card.name_en.replace(/\s+/g, '')}.jpg`;
         } else {
             // 마이너 아르카나
             const suitMap = {
@@ -68,7 +70,7 @@ class TarotCardManager {
             
             const suit = suitMap[card.suit] || 'Wands';
             const rank = card.rank.toString().padStart(2, '0');
-            return `image2/${suit}${rank}.jpg`;
+            return `images/tarot-cards/${suit}${rank}.jpg`;
         }
     }
 
@@ -77,8 +79,8 @@ class TarotCardManager {
      */
     loadFallbackData() {
         this.cards = [
-            { id: "MA0", arcana: "Major", name_ko: "바보", name_en: "The Fool", rank: 0, image: "image2/00-TheFool.jpg" },
-            { id: "MA1", arcana: "Major", name_ko: "마법사", name_en: "The Magician", rank: 1, image: "image2/01-TheMagician.jpg" },
+            { id: "MA0", arcana: "Major", name_ko: "바보", name_en: "The Fool", rank: 0, image: "images/tarot-cards/00-TheFool.jpg" },
+            { id: "MA1", arcana: "Major", name_ko: "마법사", name_en: "The Magician", rank: 1, image: "images/tarot-cards/01-TheMagician.jpg" },
             // ... 추가 필요시 확장
         ];
         this.procesCards();

@@ -36,10 +36,24 @@ class YesNoTarot {
     }
 
     setupEventListeners() {
+        console.log('setupEventListeners 시작');
+        
         // Draw button
         const drawBtn = document.getElementById('yesnoDrawBtn');
         if (drawBtn) {
-            drawBtn.addEventListener('click', () => this.drawYesNoCard());
+            // 기존 이벤트 제거
+            drawBtn.onclick = null;
+            
+            // 새 이벤트 추가
+            drawBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                console.log('드로우 버튼 클릭됨');
+                this.drawYesNoCard();
+            });
+            
+            console.log('드로우 버튼 이벤트 설정 완료');
+        } else {
+            console.error('yesnoDrawBtn 요소를 찾을 수 없습니다');
         }
 
         // Question input Enter key
@@ -48,15 +62,28 @@ class YesNoTarot {
             questionInput.addEventListener('keypress', (e) => {
                 if (e.key === 'Enter' && !e.shiftKey) {
                     e.preventDefault();
+                    console.log('엔터키로 카드 뽑기 실행');
                     this.drawYesNoCard();
                 }
             });
+            console.log('질문 입력 필드 이벤트 설정 완료');
+        } else {
+            console.error('yesnoQuestion 요소를 찾을 수 없습니다');
         }
     }
 
     drawYesNoCard() {
+        console.log('drawYesNoCard 메서드 시작');
+        
         const questionInput = document.getElementById('yesnoQuestion');
+        if (!questionInput) {
+            console.error('질문 입력 필드를 찾을 수 없습니다');
+            alert('질문 입력 필드를 찾을 수 없습니다. 페이지를 새로고침해주세요.');
+            return;
+        }
+        
         const question = questionInput.value.trim();
+        console.log('입력된 질문:', question);
 
         if (!question) {
             this.showMessage('질문을 입력해주세요! 🤔', 'warning');
@@ -70,12 +97,14 @@ class YesNoTarot {
         }
 
         this.currentQuestion = question;
+        console.log('현재 질문 설정:', this.currentQuestion);
 
         // Button state change
         const drawBtn = document.getElementById('yesnoDrawBtn');
         if (drawBtn) {
             drawBtn.disabled = true;
             drawBtn.innerHTML = '<span class="loading-spinner"></span> 카드를 뽑는 중...';
+            console.log('버튼 상태를 로딩 중으로 변경');
         }
 
         // Animate and draw card
@@ -110,7 +139,7 @@ class YesNoTarot {
                 const drawBtn = document.getElementById('yesnoDrawBtn');
                 if (drawBtn) {
                     drawBtn.disabled = false;
-                    drawBtn.innerHTML = '<span class="card-icon">🔮</span> 카드 뽑기';
+                    drawBtn.innerHTML = '<span class="yesno-btn-icon">🎯</span> 우주에게 물어보기 <span class="yesno-btn-icon">🎯</span>';
                 }
                 return;
             }
@@ -128,7 +157,7 @@ class YesNoTarot {
         const drawBtn = document.getElementById('yesnoDrawBtn');
         if (drawBtn) {
             drawBtn.disabled = false;
-            drawBtn.innerHTML = '<span class="card-icon">🔮</span> 카드 뽑기';
+            drawBtn.innerHTML = '<span class="yesno-btn-icon">🎯</span> 우주에게 물어보기 <span class="yesno-btn-icon">🎯</span>';
         }
     }
 
@@ -195,7 +224,10 @@ class YesNoTarot {
         
         // 결과 섹션이 숨겨져 있다면 보이게 만들기
         resultSection.style.display = 'block';
-        console.log('결과 섹션 display를 block으로 설정');
+        resultSection.style.opacity = '1';
+        resultSection.style.transform = 'translateY(0)';
+        resultSection.classList.add('animate-reveal');
+        console.log('결과 섹션 display를 block으로 설정하고 애니메이션 클래스 추가');
 
         const answerColors = {
             'YES': '#4CAF50',
@@ -320,7 +352,10 @@ class YesNoTarot {
                                  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
                                  display: block;
                              " 
-                             onerror="console.error('이미지 로드 실패:', '${card.image_url}'); this.parentElement.style.display='none';">
+                             onerror="console.error('이미지 로드 실패:', '${card.image_url}'); 
+                             this.src='images/tarot-cards/CardBacks.jpg'; 
+                             this.alt='카드 뒷면';"
+                             onload="console.log('이미지 로드 성공:', '${card.image_url}');">
                     </div>
 
                     <!-- 카드 정보 -->
@@ -502,6 +537,9 @@ class YesNoTarot {
         const resultSection = document.getElementById('yesnoResult');
         if (resultSection) {
             resultSection.style.display = 'none';
+            resultSection.style.opacity = '0';
+            resultSection.style.transform = 'translateY(30px)';
+            resultSection.classList.remove('animate-reveal');
         }
         
         this.currentQuestion = '';
@@ -594,7 +632,7 @@ class YesNoTarot {
             name: card.name_en,
             korean: card.name_ko,
             id: card.id,
-            image_url: card.image.startsWith('image2/') ? '../' + card.image : card.image,
+            image_url: card.image.startsWith('image2/') ? 'images/tarot-cards/' + card.image.replace('image2/', '') : card.image,
             element: card.arcana === 'Major' ? '메이저 아르카나' : card.suit,
             meaning: messageMap[type].meaning,
             advice: messageMap[type].advice,
@@ -611,7 +649,7 @@ class YesNoTarot {
                     name: 'The Sun',
                     korean: '태양',
                     id: 'MA19',
-                    image_url: '../image2/19-TheSun.jpg',
+                    image_url: 'images/tarot-cards/19-TheSun.jpg',
                     element: '메이저 아르카나',
                     meaning: '밝은 에너지와 성공의 신호입니다. 당신의 결정은 긍정적인 결과를 가져올 것입니다.',
                     advice: '자신감을 가지고 앞으로 나아가세요. 지금이 행동할 때입니다.',
@@ -623,7 +661,7 @@ class YesNoTarot {
                     name: 'The Tower',
                     korean: '탑',
                     id: 'MA16',
-                    image_url: '../image2/16-TheTower.jpg',
+                    image_url: 'images/tarot-cards/16-TheTower.jpg',
                     element: '메이저 아르카나',
                     meaning: '지금은 신중함이 필요한 시기입니다. 급격한 변화가 예상됩니다.',
                     advice: '성급한 결정보다는 더 많은 정보를 수집하고 기다리는 것이 좋겠습니다.',
@@ -635,7 +673,7 @@ class YesNoTarot {
                     name: 'The High Priestess',
                     korean: '여교황',
                     id: 'MA2',
-                    image_url: '../image2/02-TheHighPriestess.jpg',
+                    image_url: 'images/tarot-cards/02-TheHighPriestess.jpg',
                     element: '메이저 아르카나',
                     meaning: '상황이 아직 확실하지 않습니다. 직감을 믿고 더 깊이 생각해보세요.',
                     advice: '조금 더 시간을 두고 상황을 지켜본 후 결정하세요.',
@@ -721,28 +759,40 @@ function initializeExampleQuestions() {
 document.addEventListener('DOMContentLoaded', function() {
     console.log('YesNo Tarot DOM 로드 완료');
     
-    // YesNoTarot 인스턴스 생성
-    if (typeof YesNoTarot !== 'undefined') {
-        window.yesNoTarot = new YesNoTarot();
-        console.log('YesNoTarot 인스턴스 생성 완료:', window.yesNoTarot);
-    } else {
-        console.error('YesNoTarot 클래스를 찾을 수 없습니다');
-    }
-    
-    // 예시 질문 버튼 초기화
-    initializeExampleQuestions();
-    
-    // 버튼 이벤트 재확인
-    setTimeout(() => {
-        const drawBtn = document.getElementById('yesnoDrawBtn');
-        if (drawBtn && window.yesNoTarot) {
-            console.log('Draw 버튼 이벤트 재설정');
-            drawBtn.addEventListener('click', function() {
-                console.log('Draw 버튼 클릭됨');
-                window.yesNoTarot.drawYesNoCard();
-            });
+    // 카드 매니저가 로드될 때까지 기다린 후 초기화
+    const initializeYesNoTarot = () => {
+        if (typeof YesNoTarot !== 'undefined') {
+            window.yesNoTarot = new YesNoTarot();
+            console.log('YesNoTarot 인스턴스 생성 완료:', window.yesNoTarot);
+        } else {
+            console.error('YesNoTarot 클래스를 찾을 수 없습니다');
         }
-    }, 1000);
+        
+        // 예시 질문 버튼 초기화
+        initializeExampleQuestions();
+    };
+    
+    // 카드 매니저가 준비되었는지 확인
+    if (window.tarotCardManager && window.tarotCardManager.isLoaded) {
+        initializeYesNoTarot();
+    } else {
+        // 카드 매니저 로딩을 기다림
+        const checkCardManager = setInterval(() => {
+            if (window.tarotCardManager && window.tarotCardManager.isLoaded) {
+                clearInterval(checkCardManager);
+                initializeYesNoTarot();
+            }
+        }, 100);
+        
+        // 최대 5초 대기 후 강제 초기화
+        setTimeout(() => {
+            if (!window.yesNoTarot) {
+                console.warn('카드 매니저 로딩 대기 시간 초과, 강제 초기화');
+                clearInterval(checkCardManager);
+                initializeYesNoTarot();
+            }
+        }, 5000);
+    }
 });
 
 // 페이지 로드 시에도 초기화 (안전장치)
