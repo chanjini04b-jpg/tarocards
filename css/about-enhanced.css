@@ -1,0 +1,376 @@
+/* 업그레이드된 소개 & 사용법 섹션 스타일 */
+
+/* 메인 헤더 */
+.about-header {
+    text-align: center;
+    margin-bottom: 60px;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, rgba(26, 26, 46, 0.9), rgba(40, 40, 70, 0.7));
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+}
+
+.about-main-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #f0f0f0;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, #daa520, #ffd700, #daa520);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(218, 165, 32, 0.3);
+    animation: titleShimmer 4s ease-in-out infinite alternate;
+}
+
+.about-subtitle {
+    font-size: 1.3rem;
+    color: #e0e0e0;
+    font-style: italic;
+    margin: 0;
+    opacity: 0.9;
+}
+
+.mystical-accent {
+    display: inline-block;
+    animation: mysticalFloat 3s ease-in-out infinite;
+    margin: 0 15px;
+}
+
+/* 특별한 기능들 */
+.special-features {
+    margin-bottom: 80px;
+}
+
+.features-title {
+    text-align: center;
+    font-size: 2.2rem;
+    color: #f0f0f0;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.title-accent {
+    font-size: 2.5rem;
+    margin-right: 15px;
+    animation: accentGlow 2s ease-in-out infinite alternate;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.feature-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+    border-radius: 20px;
+    padding: 35px 25px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, transparent, rgba(218, 165, 32, 0.3), transparent);
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+}
+
+.feature-card:hover::before {
+    opacity: 1;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    display: block;
+    animation: iconBounce 3s ease-in-out infinite;
+}
+
+.feature-card h4 {
+    font-size: 1.3rem;
+    color: #daa520;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.feature-card p {
+    color: #e0e0e0;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* 사용법 가이드 */
+.usage-guide {
+    margin-bottom: 60px;
+}
+
+.guide-title {
+    text-align: center;
+    font-size: 2.2rem;
+    color: #f0f0f0;
+    margin-bottom: 50px;
+}
+
+.guide-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.guide-step-enhanced {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 30px;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+    border-radius: 20px;
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.guide-step-enhanced:hover {
+    transform: translateX(10px);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+}
+
+.step-number-large {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(45deg, #daa520, #ffd700);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #1a1a2e;
+    box-shadow: 0 8px 25px rgba(218, 165, 32, 0.3);
+    animation: numberPulse 3s ease-in-out infinite;
+}
+
+.step-content-enhanced h4 {
+    font-size: 1.4rem;
+    color: #daa520;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.step-content-enhanced p {
+    color: #e0e0e0;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.step-tips {
+    background: rgba(218, 165, 32, 0.1);
+    border-left: 3px solid #daa520;
+    padding: 10px 15px;
+    border-radius: 0 8px 8px 0;
+}
+
+.tip {
+    color: #ffd700;
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+/* Call to Action */
+.about-cta {
+    text-align: center;
+    padding: 50px 30px;
+    background: linear-gradient(135deg, rgba(26, 26, 46, 0.9), rgba(40, 40, 70, 0.7));
+    border-radius: 25px;
+    border: 2px solid rgba(218, 165, 32, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.about-cta::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(218, 165, 32, 0.1) 0%, transparent 70%);
+    animation: ctaGlow 6s ease-in-out infinite;
+}
+
+.cta-title {
+    font-size: 2.2rem;
+    color: #f0f0f0;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.cta-subtitle {
+    font-size: 1.2rem;
+    color: #e0e0e0;
+    margin-bottom: 35px;
+    position: relative;
+    z-index: 1;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button.primary {
+    background: linear-gradient(45deg, #daa520, #ffd700);
+    color: #1a1a2e;
+    box-shadow: 0 8px 25px rgba(218, 165, 32, 0.4);
+}
+
+.cta-button.secondary {
+    background: transparent;
+    color: #daa520;
+    border: 2px solid #daa520;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(218, 165, 32, 0.5);
+}
+
+.button-icon {
+    font-size: 1.2rem;
+    animation: iconSpin 4s linear infinite;
+}
+
+/* 애니메이션 */
+@keyframes titleShimmer {
+    0% { text-shadow: 0 0 20px rgba(218, 165, 32, 0.3); }
+    100% { text-shadow: 0 0 40px rgba(218, 165, 32, 0.6), 0 0 60px rgba(218, 165, 32, 0.3); }
+}
+
+@keyframes mysticalFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-5px) rotate(5deg); }
+}
+
+@keyframes accentGlow {
+    0% { opacity: 0.8; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.1); }
+}
+
+@keyframes iconBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes numberPulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 8px 25px rgba(218, 165, 32, 0.3); }
+    50% { transform: scale(1.05); box-shadow: 0 12px 35px rgba(218, 165, 32, 0.5); }
+}
+
+@keyframes ctaGlow {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(180deg); }
+}
+
+@keyframes iconSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .about-main-title {
+        font-size: 2.2rem;
+    }
+    
+    .about-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .guide-step-enhanced {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 20px;
+    }
+    
+    .step-number-large {
+        margin: 0 auto;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cta-button {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-header {
+        padding: 25px 15px;
+    }
+    
+    .about-main-title {
+        font-size: 1.8rem;
+    }
+    
+    .feature-card {
+        padding: 25px 20px;
+    }
+    
+    .features-title,
+    .guide-title {
+        font-size: 1.8rem;
+    }
+    
+    .cta-title {
+        font-size: 1.8rem;
+    }
+}

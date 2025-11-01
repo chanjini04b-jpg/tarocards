@@ -1,0 +1,61 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="solarGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ffeb3b;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ffdd00;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff9800;stop-opacity:1" />
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="url(#solarGradient)" filter="url(#glow)" opacity="0.9"/>
+  
+  <!-- Solar Plexus chakra symbol - Ten petals with triangle -->
+  <g transform="translate(100,100)">
+    <!-- Ten petals -->
+    <g stroke="#ff6600" stroke-width="2" fill="rgba(255,102,0,0.3)">
+      <path d="M0,-55 Q-15,-75 -30,-55 Q-15,-35 0,-55" transform="rotate(0)"/>
+      <path d="M0,-55 Q-15,-75 -30,-55 Q-15,-35 0,-55" transform="rotate(36)"/>
+      <path d="M0,-55 Q-15,-75 -30,-55 Q-15,-35 0,-55" transform="rotate(72)"/>
+      <path d="M0,-55 Q-15,-75 -30,-55 Q-15,-35 0,-55" transform="rotate(108)"/>
+      <path d="M0,-55 Q-15,-75 -30,-55 Q-15,-35 0,-55" transform="rotate(144)"/>
+      <path d="M0,-55 Q-15,-75 -30,-55 Q-15,-35 0,-55" transform="rotate(180)"/>
+      <path d="M0,-55 Q-15,-75 -30,-55 Q-15,-35 0,-55" transform="rotate(216)"/>
+      <path d="M0,-55 Q-15,-75 -30,-55 Q-15,-35 0,-55" transform="rotate(252)"/>
+      <path d="M0,-55 Q-15,-75 -30,-55 Q-15,-35 0,-55" transform="rotate(288)"/>
+      <path d="M0,-55 Q-15,-75 -30,-55 Q-15,-35 0,-55" transform="rotate(324)"/>
+    </g>
+    
+    <!-- Inner circle -->
+    <circle cx="0" cy="0" r="40" fill="none" stroke="#ff6600" stroke-width="2"/>
+    
+    <!-- Downward triangle -->
+    <path d="M-25,-15 L25,-15 L0,20 Z" fill="#ff6600" opacity="0.8"/>
+    
+    <!-- Center Sanskrit symbol RAM -->
+    <text x="0" y="35" text-anchor="middle" fill="#ff6600" font-family="serif" font-size="18" font-weight="bold">रं</text>
+  </g>
+  
+  <!-- Fire element symbols -->
+  <g opacity="0.7">
+    <path d="M50,60 Q55,45 60,60 Q65,50 70,65 Q65,75 60,70 Q55,75 50,60" fill="#ff4444">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="1.5s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" attributeType="XML" type="scale" values="1;1.1;1" dur="1.5s" repeatCount="indefinite"/>
+    </path>
+    <path d="M140,130 Q145,115 150,130 Q155,120 160,135 Q155,145 150,140 Q145,145 140,130" fill="#ff4444">
+      <animate attributeName="opacity" values="0.3;0.9;0.3" dur="1.8s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" attributeType="XML" type="scale" values="1;1.2;1" dur="1.8s" repeatCount="indefinite"/>
+    </path>
+    <path d="M45,150 Q50,135 55,150 Q60,140 65,155 Q60,165 55,160 Q50,165 45,150" fill="#ff4444">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="1.3s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" attributeType="XML" type="scale" values="1;1.15;1" dur="1.3s" repeatCount="indefinite"/>
+    </path>
+  </g>
+</svg>

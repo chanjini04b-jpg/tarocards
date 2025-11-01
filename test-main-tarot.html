@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <!-- ================== 기본 메타 태그 (SEO) ================== -->
+    <meta name="title" content="메인 타로 리딩 테스트">
+    <meta name="description" content="메인 타로 리딩 기능을 테스트하는 페이지">
+    <meta name="keywords" content="타로, 메인 리딩, 테스트, 카드, 시스템 점검">
+    <meta name="author" content="Historical Tarot Team">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- ================== Open Graph 메타 태그 ================== -->
+    <meta property="og:title" content="메인 타로 리딩 테스트">
+    <meta property="og:description" content="메인 타로 리딩 기능을 테스트하는 페이지">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tarocards.netlify.app/test-main-tarot.html">
+    <meta property="og:image" content="https://tarocards.netlify.app/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="메인 타로 리딩 테스트 대표 이미지">
+    <meta property="og:site_name" content="Historical Tarot">
+    <meta property="og:locale" content="ko_KR">
+
+    <!-- ================== Twitter 카드 메타 태그 ================== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="메인 타로 리딩 테스트">
+    <meta name="twitter:description" content="메인 타로 리딩 기능을 테스트하는 페이지">
+    <meta name="twitter:image" content="https://tarocards.netlify.app/images/og-image.jpg">
+    <meta name="twitter:image:alt" content="메인 타로 리딩 테스트 대표 이미지">
+    <meta name="twitter:site" content="@historicaltarot">
+    <meta name="twitter:creator" content="@historicaltarot">
+
+    <!-- ================== SEO 및 사용자 경험 보완 태그 ================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="language" content="ko">
+    <meta name="distribution" content="global">
+    <meta name="rating" content="general">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="canonical" href="https://tarocards.netlify.app/test-main-tarot.html">
+
+    <!-- ================== 웹앱 및 브라우저 최적화 ================== -->
+    <meta name="theme-color" content="#ffffff">
+    <meta name="application-name" content="Historical Tarot">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Historical Tarot">
+
+    <!-- ================== 아이콘 및 리소스 링크 ================== -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <title>메인 타로 리딩 테스트</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #1a1a2e;
+            color: white;
+        }
+        .test-section {
+            background: #16213e;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border: 1px solid #0f3460;
+        }
+        .test-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px;
+            font-size: 16px;
+        }
+        .test-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        .test-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .result {
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        .spread-option {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .spread-option:hover {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.2);
+        }
+        .spread-option.active {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.3);
+        }
+        #debugOutput {
+            background: #000;
+            color: #0f0;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .card-result {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #667eea;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            text-align: center;
+        }
+        .card-image {
+            max-width: 200px;
+            height: auto;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔮 메인 타로 리딩 테스트</h1>
+    
+    <div class="test-section">
+        <h2>메인 타로 리딩 시스템 상태</h2>
+        <button class="test-button" onclick="checkMainTarotStatus()">상태 확인</button>
+        <button class="test-button" onclick="testSimpleTarot()">SimpleTarot 테스트</button>
+        <button class="test-button" onclick="testTarotUI()">타로 UI 테스트</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>스프레드 선택 테스트</h2>
+        <div class="spread-option active" data-count="1" onclick="selectSpread(1, this)">
+            원 카드
+        </div>
+        <div class="spread-option" data-count="3" onclick="selectSpread(3, this)">
+            삼각 스프레드
+        </div>
+        <div class="spread-option" data-count="5" onclick="selectSpread(5, this)">
+            별자리 스프레드
+        </div>
+        <div class="result">
+            선택된 스프레드: <span id="selectedSpread">원 카드 (1장)</span>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>카드 뽑기 테스트</h2>
+        <input type="text" id="testQuestion" placeholder="마음속 질문을 적어주세요..." 
+               style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #667eea; background: rgba(255,255,255,0.1); color: white;">
+        <br><br>
+        <button class="test-button" id="testDrawBtn" onclick="drawTestCards()">카드 뽑기</button>
+        <div id="testResults"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>디버그 출력</h2>
+        <div id="debugOutput">시스템 로딩 중...</div>
+        <button class="test-button" onclick="clearDebug()">출력 지우기</button>
+    </div>
+
+    <!-- 필요한 스크립트들 로드 -->
+    <script src="js/tarot-cards-data.js"></script>
+    <script src="js/tarot-card-manager.js"></script>
+    <script src="javascript/simple-tarot.js"></script>
+    <script src="javascript/ui.js"></script>
+
+    <script>
+        let selectedSpreadCount = 1;
+        
+        function log(message) {
+            const output = document.getElementById('debugOutput');
+            const timestamp = new Date().toLocaleTimeString();
+            output.textContent += `[${timestamp}] ${message}\n`;
+            output.scrollTop = output.scrollHeight;
+        }
+        
+        function clearDebug() {
+            document.getElementById('debugOutput').textContent = '';
+        }
+        
+        function checkMainTarotStatus() {
+            log('=== 메인 타로 리딩 시스템 상태 확인 ===');
+            
+            // SimpleTarot 시스템 확인
+            if (typeof SimpleTarotSystem !== 'undefined') {
+                log('✅ SimpleTarotSystem 클래스 발견');
+                if (typeof simpleTarot !== 'undefined') {
+                    log('✅ simpleTarot 인스턴스 발견');
+                    log('카드 수: ' + simpleTarot.cards.length);
+                    log('준비 상태: ' + simpleTarot.isReady);
+                } else {
+                    log('❌ simpleTarot 인스턴스 없음');
+                }
+            } else {
+                log('❌ SimpleTarotSystem 클래스 없음');
+            }
+            
+            // 기존 타로 시스템 확인
+            if (typeof FULL_TAROT_CARDS !== 'undefined') {
+                log('✅ FULL_TAROT_CARDS 데이터 발견: ' + FULL_TAROT_CARDS.length + '개');
+            } else {
+                log('❌ FULL_TAROT_CARDS 데이터 없음');
+            }
+            
+            if (typeof TarotCardManager !== 'undefined') {
+                log('✅ TarotCardManager 클래스 발견');
+            } else {
+                log('❌ TarotCardManager 클래스 없음');
+            }
+            
+            // HTML 요소 확인
+            const elements = {
+                'userQuestion': document.getElementById('userQuestion'),
+                'spreadOptions': document.querySelectorAll('.spread-option'),
+                'drawCardsBtn': document.getElementById('drawCardsBtn'),
+                'readingResults': document.getElementById('readingResults'),
+                'drawnCards': document.getElementById('drawnCards')
+            };
+            
+            log('\n--- HTML 요소 확인 ---');
+            for (const [name, element] of Object.entries(elements)) {
+                if (element) {
+                    if (element.length !== undefined) {
+                        log(`✅ ${name}: ${element.length}개 발견`);
+                    } else {
+                        log(`✅ ${name}: 발견`);
+                    }
+                } else {
+                    log(`❌ ${name}: 없음`);
+                }
+            }
+        }
+        
+        function testSimpleTarot() {
+            log('\n=== SimpleTarot 시스템 테스트 ===');
+            
+            try {
+                if (typeof simpleTarot === 'undefined') {
+                    log('❌ simpleTarot 인스턴스가 없습니다.');
+                    return;
+                }
+                
+                // 원 카드 테스트
+                log('원 카드 리딩 테스트...');
+                const oneCard = simpleTarot.oneCardReading();
+                log('✅ 원 카드 성공: ' + oneCard.card.name_ko);
+                
+                // 쓰리 카드 테스트
+                log('쓰리 카드 스프레드 테스트...');
+                const threeCards = simpleTarot.threeCardSpread();
+                log('✅ 쓰리 카드 성공: ' + threeCards.length + '장');
+                threeCards.forEach(card => {
+                    log(`  ${card.position}: ${card.name_ko}`);
+                });
+                
+                // 랜덤 질문 테스트
+                log('랜덤 질문 테스트...');
+                const question = simpleTarot.getRandomQuestion();
+                log('✅ 랜덤 질문: ' + question);
+                
+            } catch (error) {
+                log('❌ SimpleTarot 테스트 실패: ' + error.message);
+                console.error(error);
+            }
+        }
+        
+        function testTarotUI() {
+            log('\n=== 타로 UI 테스트 ===');
+            
+            // 기본 HTML 요소들이 메인 페이지에서 로드되는지 확인
+            try {
+                log('메인 페이지 요소 접근 테스트...');
+                
+                // iframe으로 메인 페이지 접근 시도
+                const iframe = document.createElement('iframe');
+                iframe.src = 'index.html';
+                iframe.style.display = 'none';
+                document.body.appendChild(iframe);
+                
+                iframe.onload = function() {
+                    try {
+                        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                        const drawBtn = iframeDoc.getElementById('drawCardsBtn');
+                        if (drawBtn) {
+                            log('✅ 메인 페이지의 drawCardsBtn 발견');
+                            log('버튼 상태: ' + (drawBtn.disabled ? '비활성화' : '활성화'));
+                        } else {
+                            log('❌ 메인 페이지의 drawCardsBtn 없음');
+                        }
+                        
+                        const spreadOptions = iframeDoc.querySelectorAll('.spread-option');
+                        log(`✅ 스프레드 옵션 ${spreadOptions.length}개 발견`);
+                        
+                    } catch (e) {
+                        log('❌ 메인 페이지 접근 오류: ' + e.message);
+                    }
+                    
+                    document.body.removeChild(iframe);
+                };
+                
+            } catch (error) {
+                log('❌ UI 테스트 실패: ' + error.message);
+            }
+        }
+        
+        function selectSpread(count, element) {
+            // 기존 active 클래스 제거
+            document.querySelectorAll('.spread-option').forEach(opt => {
+                opt.classList.remove('active');
+            });
+            
+            // 새로운 요소에 active 클래스 추가
+            element.classList.add('active');
+            
+            selectedSpreadCount = count;
+            
+            const spreadNames = {
+                1: '원 카드',
+                3: '삼각 스프레드',
+                5: '별자리 스프레드'
+            };
+            
+            document.getElementById('selectedSpread').textContent = 
+                `${spreadNames[count]} (${count}장)`;
+            
+            log(`스프레드 선택: ${spreadNames[count]} (${count}장)`);
+        }
+        
+        function drawTestCards() {
+            log('\n=== 카드 뽑기 테스트 시작 ===');
+            
+            const question = document.getElementById('testQuestion').value || '테스트 질문';
+            log('질문: ' + question);
+            log('선택된 스프레드: ' + selectedSpreadCount + '장');
+            
+            try {
+                if (typeof simpleTarot === 'undefined') {
+                    log('❌ simpleTarot 시스템이 로드되지 않았습니다.');
+                    return;
+                }
+                
+                let result;
+                if (selectedSpreadCount === 1) {
+                    result = simpleTarot.oneCardReading();
+                    displayOneCardResult(result, question);
+                } else if (selectedSpreadCount === 3) {
+                    result = simpleTarot.threeCardSpread();
+                    displayThreeCardResult(result, question);
+                } else if (selectedSpreadCount === 5) {
+                    // 5장 스프레드는 아직 구현되지 않음
+                    log('⚠️ 5장 스프레드는 아직 구현되지 않았습니다.');
+                    result = simpleTarot.threeCardSpread();
+                    displayThreeCardResult(result, question);
+                }
+                
+                log('✅ 카드 뽑기 완료');
+                
+            } catch (error) {
+                log('❌ 카드 뽑기 실패: ' + error.message);
+                console.error(error);
+            }
+        }
+        
+        function displayOneCardResult(result, question) {
+            const resultsDiv = document.getElementById('testResults');
+            const card = result.card;
+            
+            const html = `
+                <div class="card-result">
+                    <h3>🔮 ${question}</h3>
+                    <div class="card-info">
+                        <h4>${card.name_ko} (${card.name_en})</h4>
+                        <img src="../image2/${card.name_en}.jpg" alt="${card.name_ko}" class="card-image" 
+                             onerror="this.src='../Cards-jpg/Cards-jpg/${String(card.rank || 0).padStart(2, '0')}-${card.name_en.replace(/\\s+/g, '')}.jpg'">
+                        <p><strong>${card.reversed ? '역방향' : '정방향'}:</strong> ${card.meaning}</p>
+                        <p><em>${result.interpretation}</em></p>
+                    </div>
+                </div>
+            `;
+            
+            resultsDiv.innerHTML = html;
+            log(`카드 표시: ${card.name_ko} (${card.reversed ? '역방향' : '정방향'})`);
+        }
+        
+        function displayThreeCardResult(cards, question) {
+            const resultsDiv = document.getElementById('testResults');
+            
+            let html = `
+                <div class="card-result">
+                    <h3>🔮 ${question}</h3>
+                    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+            `;
+            
+            cards.forEach(card => {
+                html += `
+                    <div style="text-align: center; flex: 1; min-width: 200px;">
+                        <h4>${card.position}</h4>
+                        <p><strong>${card.name_ko}</strong></p>
+                        <img src="../image2/${card.name_en}.jpg" alt="${card.name_ko}" class="card-image" 
+                             style="max-width: 150px;"
+                             onerror="this.src='../Cards-jpg/Cards-jpg/${String(card.rank || 0).padStart(2, '0')}-${card.name_en.replace(/\\s+/g, '')}.jpg'">
+                        <p><small>${card.reversed ? '역방향' : '정방향'}: ${card.meaning}</small></p>
+                    </div>
+                `;
+            });
+            
+            html += `
+                    </div>
+                </div>
+            `;
+            
+            resultsDiv.innerHTML = html;
+            log(`3장 스프레드 표시 완료`);
+            cards.forEach(card => {
+                log(`  ${card.position}: ${card.name_ko} (${card.reversed ? '역방향' : '정방향'})`);
+            });
+        }
+        
+        // 페이지 로드 완료 후 자동 상태 확인
+        window.addEventListener('load', function() {
+            log('페이지 로드 완료');
+            setTimeout(() => {
+                checkMainTarotStatus();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

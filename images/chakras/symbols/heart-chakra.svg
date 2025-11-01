@@ -1,0 +1,69 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="heartGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#66bb6a;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#4caf50;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2e7d32;stop-opacity:1" />
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="url(#heartGradient)" filter="url(#glow)" opacity="0.9"/>
+  
+  <!-- Heart chakra symbol - Twelve petals with hexagram -->
+  <g transform="translate(100,100)">
+    <!-- Twelve petals -->
+    <g stroke="#ffffff" stroke-width="2" fill="rgba(255,255,255,0.2)">
+      <path d="M0,-60 Q-18,-80 -36,-60 Q-18,-40 0,-60" transform="rotate(0)"/>
+      <path d="M0,-60 Q-18,-80 -36,-60 Q-18,-40 0,-60" transform="rotate(30)"/>
+      <path d="M0,-60 Q-18,-80 -36,-60 Q-18,-40 0,-60" transform="rotate(60)"/>
+      <path d="M0,-60 Q-18,-80 -36,-60 Q-18,-40 0,-60" transform="rotate(90)"/>
+      <path d="M0,-60 Q-18,-80 -36,-60 Q-18,-40 0,-60" transform="rotate(120)"/>
+      <path d="M0,-60 Q-18,-80 -36,-60 Q-18,-40 0,-60" transform="rotate(150)"/>
+      <path d="M0,-60 Q-18,-80 -36,-60 Q-18,-40 0,-60" transform="rotate(180)"/>
+      <path d="M0,-60 Q-18,-80 -36,-60 Q-18,-40 0,-60" transform="rotate(210)"/>
+      <path d="M0,-60 Q-18,-80 -36,-60 Q-18,-40 0,-60" transform="rotate(240)"/>
+      <path d="M0,-60 Q-18,-80 -36,-60 Q-18,-40 0,-60" transform="rotate(270)"/>
+      <path d="M0,-60 Q-18,-80 -36,-60 Q-18,-40 0,-60" transform="rotate(300)"/>
+      <path d="M0,-60 Q-18,-80 -36,-60 Q-18,-40 0,-60" transform="rotate(330)"/>
+    </g>
+    
+    <!-- Inner circle -->
+    <circle cx="0" cy="0" r="45" fill="none" stroke="#ffffff" stroke-width="2"/>
+    
+    <!-- Hexagram (Star of David) -->
+    <g stroke="#ffffff" stroke-width="2" fill="rgba(255,255,255,0.4)">
+      <!-- Upward triangle -->
+      <path d="M-20,-12 L20,-12 L0,-32 Z"/>
+      <!-- Downward triangle -->
+      <path d="M-20,12 L20,12 L0,32 Z"/>
+    </g>
+    
+    <!-- Center Sanskrit symbol YAM -->
+    <text x="0" y="38" text-anchor="middle" fill="#ffffff" font-family="serif" font-size="18" font-weight="bold">यं</text>
+  </g>
+  
+  <!-- Love energy particles -->
+  <g opacity="0.8">
+    <!-- Hearts -->
+    <path d="M60,70 Q55,65 50,70 Q55,75 60,70 Q65,65 70,70 Q65,75 60,70" fill="#ffb3ba">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="2.5s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" attributeType="XML" type="translate" values="0,0; 0,-3; 0,0" dur="2.5s" repeatCount="indefinite"/>
+    </path>
+    <path d="M130,40 Q125,35 120,40 Q125,45 130,40 Q135,35 140,40 Q135,45 130,40" fill="#ffb3ba">
+      <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2.8s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" attributeType="XML" type="translate" values="0,0; 0,-2; 0,0" dur="2.8s" repeatCount="indefinite"/>
+    </path>
+    <path d="M40,150 Q35,145 30,150 Q35,155 40,150 Q45,145 50,150 Q45,155 40,150" fill="#ffb3ba">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="2.2s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" attributeType="XML" type="translate" values="0,0; 0,-4; 0,0" dur="2.2s" repeatCount="indefinite"/>
+    </path>
+  </g>
+</svg>

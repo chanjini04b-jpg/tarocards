@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <!-- ================== 기본 메타 태그 (SEO) ================== -->
+    <meta name="title" content="타로 시스템 오류 진단">
+    <meta name="description" content="타로 시스템의 오류를 단계별로 진단하고 테스트하는 페이지">
+    <meta name="keywords" content="타로, 오류, 진단, 테스트, 시스템 점검, 디버그">
+    <meta name="author" content="Historical Tarot Team">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- ================== Open Graph 메타 태그 ================== -->
+    <meta property="og:title" content="타로 시스템 오류 진단">
+    <meta property="og:description" content="타로 시스템의 오류를 단계별로 진단하고 테스트하는 페이지">
+    <meta property="og:type" content="website">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="타로 오류 진단 대표 이미지">
+    <meta property="og:site_name" content="Historical Tarot">
+    <meta property="og:locale" content="ko_KR">
+        <meta property="og:url" content="https://tarocards.netlify.app/diagnosis.html">
+        <meta property="og:image" content="https://tarocards.netlify.app/images/og-image.jpg">
+
+    <!-- ================== Twitter 카드 메타 태그 ================== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="타로 시스템 오류 진단">
+    <meta name="twitter:description" content="타로 시스템의 오류를 단계별로 진단하고 테스트하는 페이지">
+        <meta name="twitter:image" content="https://tarocards.netlify.app/images/og-image.jpg">
+    <meta name="twitter:image:alt" content="타로 오류 진단 대표 이미지">
+    <meta name="twitter:site" content="@historicaltarot">
+    <meta name="twitter:creator" content="@historicaltarot">
+
+    <!-- ================== SEO 및 사용자 경험 보완 태그 ================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="language" content="ko">
+    <meta name="distribution" content="global">
+    <meta name="rating" content="general">
+    <meta name="format-detection" content="telephone=no">
+        <link rel="canonical" href="https://tarocards.netlify.app/diagnosis.html">
+
+    <!-- ================== 웹앱 및 브라우저 최적화 ================== -->
+    <meta name="theme-color" content="#ffffff">
+    <meta name="application-name" content="Historical Tarot">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Historical Tarot">
+
+    <!-- ================== 아이콘 및 리소스 링크 ================== -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <title>타로 시스템 오류 진단</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #1a1a2e; color: white; }
+        .log { background: #16213e; padding: 15px; margin: 10px 0; border-radius: 8px; }
+        .error { color: #ff6b6b; }
+        .success { color: #51cf66; }
+        .warning { color: #ffd43b; }
+        .info { color: #74c0fc; }
+        pre { white-space: pre-wrap; }
+    </style>
+</head>
+<body>
+    <h1>🔍 타로 시스템 오류 진단</h1>
+    
+    <div id="step1" class="log">
+        <h3>1단계: 스크립트 로딩 확인</h3>
+        <div id="step1-result">확인 중...</div>
+    </div>
+    
+    <div id="step2" class="log">
+        <h3>2단계: JSON 파일 접근 테스트</h3>
+        <div id="step2-result">대기 중...</div>
+    </div>
+    
+    <div id="step3" class="log">
+        <h3>3단계: 클래스 생성 테스트</h3>
+        <div id="step3-result">대기 중...</div>
+    </div>
+    
+    <div id="step4" class="log">
+        <h3>4단계: 데이터 로딩 테스트</h3>
+        <div id="step4-result">대기 중...</div>
+    </div>
+    
+    <div id="step5" class="log">
+        <h3>5단계: 카드 뽑기 테스트</h3>
+        <div id="step5-result">대기 중...</div>
+    </div>
+
+    <script src="javascript/backup-data.js"></script>
+    <script src="javascript/tarot.js"></script>
+    
+    <script>
+        let currentStep = 1;
+        let deck = null;
+        
+        function logResult(step, message, type = 'info') {
+            const element = document.getElementById(`step${step}-result`);
+            const className = type;
+            element.innerHTML = `<span class="${className}">${message}</span>`;
+            console.log(`Step ${step}: ${message}`);
+        }
+        
+        function logError(step, error) {
+            logResult(step, `❌ 오류: ${error.message}\n상세: ${error.stack}`, 'error');
+        }
+        
+        async function runDiagnostics() {
+            try {
+                // 1단계: 스크립트 로딩 확인
+                logResult(1, '✅ 스크립트 파일들이 로드되었습니다.', 'success');
+                
+                // 클래스 존재 확인
+                if (typeof HistoricalTarotDeck === 'undefined') {
+                    logResult(1, '❌ HistoricalTarotDeck 클래스를 찾을 수 없습니다.', 'error');
+                    return;
+                }
+                logResult(1, '✅ HistoricalTarotDeck 클래스 발견', 'success');
+                
+                // 2단계: JSON 파일 접근 테스트
+                try {
+                    logResult(2, '📡 JSON 파일 요청 중...', 'info');
+                    
+                    const cardsResponse = await fetch('./tarot_cards.json');
+                    logResult(2, `카드 데이터 응답: ${cardsResponse.status} ${cardsResponse.statusText}`, 'info');
+                    
+                    if (!cardsResponse.ok) {
+                        throw new Error(`카드 데이터 로드 실패: ${cardsResponse.status}`);
+                    }
+                    
+                    const cardsData = await cardsResponse.json();
+                    logResult(2, `✅ 카드 데이터 로드 성공: ${cardsData.length}개 카드`, 'success');
+                    
+                    const backgroundsResponse = await fetch('./tarot_card_backgrounds_simple.json');
+                    logResult(2, `배경 데이터 응답: ${backgroundsResponse.status} ${backgroundsResponse.statusText}`, 'info');
+                    
+                    if (!backgroundsResponse.ok) {
+                        throw new Error(`배경 데이터 로드 실패: ${backgroundsResponse.status}`);
+                    }
+                    
+                    const backgroundsData = await backgroundsResponse.json();
+                    logResult(2, `✅ 배경 데이터 로드 성공: ${backgroundsData.length}개 배경`, 'success');
+                    
+                } catch (error) {
+                    logError(2, error);
+                    return;
+                }
+                
+                // 3단계: 클래스 생성 테스트
+                try {
+                    logResult(3, '🏗️ HistoricalTarotDeck 인스턴스 생성 중...', 'info');
+                    deck = new HistoricalTarotDeck();
+                    logResult(3, '✅ 클래스 인스턴스 생성 성공', 'success');
+                } catch (error) {
+                    logError(3, error);
+                    return;
+                }
+                
+                // 4단계: 데이터 로딩 테스트
+                try {
+                    logResult(4, '📥 데이터 로딩 시작...', 'info');
+                    await deck.loadData();
+                    logResult(4, `✅ 데이터 로딩 완료: isLoaded=${deck.isLoaded}, cards=${deck.cards?.length}`, 'success');
+                } catch (error) {
+                    logError(4, error);
+                    return;
+                }
+                
+                // 5단계: 카드 뽑기 테스트
+                try {
+                    logResult(5, '🎴 카드 뽑기 테스트...', 'info');
+                    const drawnCards = deck.drawCards(3);
+                    logResult(5, `✅ 카드 뽑기 성공: ${drawnCards.map(c => c.name_ko).join(', ')}`, 'success');
+                    
+                    // 전체 성공
+                    document.body.insertAdjacentHTML('beforeend', `
+                        <div class="log" style="background: #2d8653; text-align: center;">
+                            <h2>🎉 모든 테스트 통과! 시스템이 정상 작동합니다.</h2>
+                        </div>
+                    `);
+                    
+                } catch (error) {
+                    logError(5, error);
+                    return;
+                }
+                
+            } catch (globalError) {
+                console.error('진단 중 전역 오류:', globalError);
+                document.body.insertAdjacentHTML('beforeend', `
+                    <div class="log" style="background: #c92a2a;">
+                        <h3>❌ 전역 오류 발생</h3>
+                        <pre>${globalError.message}\n${globalError.stack}</pre>
+                    </div>
+                `);
+            }
+        }
+        
+        // 페이지 로드 후 진단 시작
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('=== 타로 시스템 진단 시작 ===');
+            runDiagnostics();
+        });
+        
+        // 전역 오류 감지
+        window.addEventListener('error', function(e) {
+            console.error('전역 오류 감지:', e.error);
+            document.body.insertAdjacentHTML('beforeend', `
+                <div class="log" style="background: #c92a2a;">
+                    <h3>⚠️ 전역 오류 감지</h3>
+                    <pre>${e.error?.message}\n${e.error?.stack}</pre>
+                </div>
+            `);
+        });
+        
+        window.addEventListener('unhandledrejection', function(e) {
+            console.error('처리되지 않은 Promise 거부:', e.reason);
+            document.body.insertAdjacentHTML('beforeend', `
+                <div class="log" style="background: #c92a2a;">
+                    <h3>⚠️ Promise 거부</h3>
+                    <pre>${e.reason}</pre>
+                </div>
+            `);
+        });
+    </script>
+</body>
+</html>

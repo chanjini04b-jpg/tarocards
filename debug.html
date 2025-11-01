@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <!-- ================== 기본 메타 태그 (SEO) ================== -->
+    <meta name="title" content="타로 시스템 디버그 테스트">
+    <meta name="description" content="타로 시스템의 파일, 클래스, 카드 뽑기 등 디버그 테스트 페이지">
+    <meta name="keywords" content="타로, 디버그, 테스트, 타로카드, 시스템 점검">
+    <meta name="author" content="Historical Tarot Team">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- ================== Open Graph 메타 태그 ================== -->
+    <meta property="og:title" content="타로 시스템 디버그 테스트">
+    <meta property="og:description" content="타로 시스템의 파일, 클래스, 카드 뽑기 등 디버그 테스트 페이지">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tarocards.netlify.app/debug.html">
+    <meta property="og:image" content="https://tarocards.netlify.app/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="타로 디버그 대표 이미지">
+    <meta property="og:site_name" content="Historical Tarot">
+    <meta property="og:locale" content="ko_KR">
+
+    <!-- ================== Twitter 카드 메타 태그 ================== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="타로 시스템 디버그 테스트">
+    <meta name="twitter:description" content="타로 시스템의 파일, 클래스, 카드 뽑기 등 디버그 테스트 페이지">
+    <meta name="twitter:image" content="https://tarocards.netlify.app/images/og-image.jpg">
+    <meta name="twitter:image:alt" content="타로 디버그 대표 이미지">
+    <meta name="twitter:site" content="@historicaltarot">
+    <meta name="twitter:creator" content="@historicaltarot">
+
+    <!-- ================== SEO 및 사용자 경험 보완 태그 ================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="language" content="ko">
+    <meta name="distribution" content="global">
+    <meta name="rating" content="general">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="canonical" href="https://tarocards.netlify.app/debug.html">
+
+    <!-- ================== 웹앱 및 브라우저 최적화 ================== -->
+    <meta name="theme-color" content="#ffffff">
+    <meta name="application-name" content="Historical Tarot">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Historical Tarot">
+
+    <!-- ================== 아이콘 및 리소스 링크 ================== -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <title>디버그 테스트</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; }
+        .error { color: red; }
+        .success { color: green; }
+        .info { color: blue; }
+    </style>
+</head>
+<body>
+    <h1>타로 시스템 디버그 테스트</h1>
+    
+    <div class="test-section">
+        <h3>1. 파일 로딩 테스트</h3>
+        <div id="file-test">테스트 중...</div>
+    </div>
+    
+    <div class="test-section">
+        <h3>2. 클래스 인스턴스 테스트</h3>
+        <div id="class-test">테스트 중...</div>
+    </div>
+    
+    <div class="test-section">
+        <h3>3. 카드 뽑기 테스트</h3>
+        <div id="draw-test">테스트 중...</div>
+    </div>
+    
+    <script src="javascript/backup-data.js"></script>
+    <script src="javascript/tarot.js"></script>
+    
+    <script>
+        console.log('=== 디버그 테스트 시작 ===');
+        
+        // 1. 파일 로딩 테스트
+        async function testFileLoading() {
+            try {
+                const response = await fetch('./tarot_cards.json');
+                if (response.ok) {
+                    const data = await response.json();
+                    document.getElementById('file-test').innerHTML = 
+                        `<span class="success">✓ tarot_cards.json 로드 성공 (${data.length}개 카드)</span>`;
+                    return true;
+                } else {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+            } catch (error) {
+                document.getElementById('file-test').innerHTML = 
+                    `<span class="error">✗ 파일 로딩 실패: ${error.message}</span>`;
+                return false;
+            }
+        }
+        
+        // 2. 클래스 인스턴스 테스트
+        async function testClassInstance() {
+            try {
+                if (typeof HistoricalTarotDeck === 'undefined') {
+                    throw new Error('HistoricalTarotDeck 클래스가 정의되지 않음');
+                }
+                
+                const deck = new HistoricalTarotDeck();
+                await deck.loadData();
+                
+                document.getElementById('class-test').innerHTML = 
+                    `<span class="success">✓ 클래스 인스턴스 생성 및 데이터 로드 성공</span>`;
+                return deck;
+            } catch (error) {
+                document.getElementById('class-test').innerHTML = 
+                    `<span class="error">✗ 클래스 테스트 실패: ${error.message}</span>`;
+                return null;
+            }
+        }
+        
+        // 3. 카드 뽑기 테스트
+        async function testCardDrawing(deck) {
+            try {
+                if (!deck) {
+                    throw new Error('덱이 없음');
+                }
+                
+                const cards = deck.drawCards(3);
+                document.getElementById('draw-test').innerHTML = 
+                    `<span class="success">✓ 카드 뽑기 성공: ${cards.map(c => c.name_ko).join(', ')}</span>`;
+                return true;
+            } catch (error) {
+                document.getElementById('draw-test').innerHTML = 
+                    `<span class="error">✗ 카드 뽑기 실패: ${error.message}</span>`;
+                return false;
+            }
+        }
+        
+        // 전체 테스트 실행
+        async function runTests() {
+            console.log('파일 로딩 테스트 시작...');
+            const fileLoadOk = await testFileLoading();
+            
+            if (fileLoadOk) {
+                console.log('클래스 인스턴스 테스트 시작...');
+                const deck = await testClassInstance();
+                
+                if (deck) {
+                    console.log('카드 뽑기 테스트 시작...');
+                    await testCardDrawing(deck);
+                }
+            }
+            
+            console.log('=== 디버그 테스트 완료 ===');
+        }
+        
+        // 페이지 로드 후 테스트 실행
+        document.addEventListener('DOMContentLoaded', runTests);
+    </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<svg width="150" height="150" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="blockedGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#757575;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#424242;stop-opacity:0.6" />
+    </radialGradient>
+    <filter id="blockedGlow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="75" cy="75" r="70" fill="url(#blockedGradient)" filter="url(#blockedGlow)" opacity="0.8"/>
+  
+  <!-- Blocked energy symbol - Barriers and blockages -->
+  <g transform="translate(75,75)">
+    <!-- Central blockage -->
+    <rect x="-25" y="-25" width="50" height="50" fill="rgba(97,97,97,0.7)" stroke="#ffffff" stroke-width="2" rx="5"/>
+    
+    <!-- X mark indicating blockage -->
+    <g stroke="#ffffff" stroke-width="3" opacity="0.8">
+      <path d="M-15,-15 L15,15"/>
+      <path d="M15,-15 L-15,15"/>
+    </g>
+    
+    <!-- Blocked energy points trying to escape -->
+    <g fill="rgba(255,255,255,0.5)">
+      <circle cx="0" cy="-35" r="3" opacity="0.6">
+        <animate attributeName="cy" values="-35;-40;-35" dur="2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.6;0.3;0.6" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="25" cy="-25" r="2.5" opacity="0.5">
+        <animate attributeName="cx" values="25;30;25" dur="1.8s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.5;0.2;0.5" dur="1.8s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="35" cy="0" r="3" opacity="0.6">
+        <animate attributeName="cx" values="35;40;35" dur="2.2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.6;0.3;0.6" dur="2.2s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="25" cy="25" r="2.5" opacity="0.5">
+        <animate attributeName="cx" values="25;30;25" dur="1.9s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="25;30;25" dur="1.9s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.5;0.2;0.5" dur="1.9s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="0" cy="35" r="3" opacity="0.6">
+        <animate attributeName="cy" values="35;40;35" dur="2.1s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.6;0.3;0.6" dur="2.1s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="-25" cy="25" r="2.5" opacity="0.5">
+        <animate attributeName="cx" values="-25;-30;-25" dur="1.7s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="25;30;25" dur="1.7s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.5;0.2;0.5" dur="1.7s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="-35" cy="0" r="3" opacity="0.6">
+        <animate attributeName="cx" values="-35;-40;-35" dur="2.3s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.6;0.3;0.6" dur="2.3s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="-25" cy="-25" r="2.5" opacity="0.5">
+        <animate attributeName="cx" values="-25;-30;-25" dur="1.6s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="-25;-30;-25" dur="1.6s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.5;0.2;0.5" dur="1.6s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+    
+    <!-- Barrier lines -->
+    <g stroke="rgba(255,255,255,0.4)" stroke-width="1" fill="none">
+      <path d="M-45,0 L-30,0">
+        <animate attributeName="opacity" values="0.4;0.7;0.4" dur="2s" repeatCount="indefinite"/>
+      </path>
+      <path d="M30,0 L45,0">
+        <animate attributeName="opacity" values="0.4;0.7;0.4" dur="2.1s" repeatCount="indefinite"/>
+      </path>
+      <path d="M0,-45 L0,-30">
+        <animate attributeName="opacity" values="0.4;0.7;0.4" dur="1.9s" repeatCount="indefinite"/>
+      </path>
+      <path d="M0,30 L0,45">
+        <animate attributeName="opacity" values="0.4;0.7;0.4" dur="2.2s" repeatCount="indefinite"/>
+      </path>
+    </g>
+  </g>
+  
+  <!-- Scattered blocked energy -->
+  <g opacity="0.5">
+    <circle cx="20" cy="30" r="1.5" fill="#bdbdbd">
+      <animate attributeName="opacity" values="0.3;0.6;0.3" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="130" cy="120" r="1" fill="#bdbdbd">
+      <animate attributeName="opacity" values="0.2;0.5;0.2" dur="2.8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="30" cy="120" r="1.2" fill="#bdbdbd">
+      <animate attributeName="opacity" values="0.4;0.7;0.4" dur="2.3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="120" cy="30" r="1" fill="#bdbdbd">
+      <animate attributeName="opacity" values="0.3;0.6;0.3" dur="2.6s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>

@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <!-- ================== 기본 메타 태그 (SEO) ================== -->
+    <meta name="title" content="YES/NO 타로 디버그 도구">
+    <meta name="description" content="YES/NO 타로 기능을 테스트하고 디버깅하는 도구 페이지">
+    <meta name="keywords" content="타로, YES/NO, 디버그, 테스트, 타로카드, 도구">
+    <meta name="author" content="Historical Tarot Team">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- ================== Open Graph 메타 태그 ================== -->
+    <meta property="og:title" content="YES/NO 타로 디버그 도구">
+    <meta property="og:description" content="YES/NO 타로 기능을 테스트하고 디버깅하는 도구 페이지">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tarocards.netlify.app/debug-tool.html">
+    <meta property="og:image" content="https://tarocards.netlify.app/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="YES/NO 타로 디버그 대표 이미지">
+    <meta property="og:site_name" content="Historical Tarot">
+    <meta property="og:locale" content="ko_KR">
+
+    <!-- ================== Twitter 카드 메타 태그 ================== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="YES/NO 타로 디버그 도구">
+    <meta name="twitter:description" content="YES/NO 타로 기능을 테스트하고 디버깅하는 도구 페이지">
+    <meta name="twitter:image" content="https://tarocards.netlify.app/images/og-image.jpg">
+    <meta name="twitter:image:alt" content="YES/NO 타로 디버그 대표 이미지">
+    <meta name="twitter:site" content="@historicaltarot">
+    <meta name="twitter:creator" content="@historicaltarot">
+
+    <!-- ================== SEO 및 사용자 경험 보완 태그 ================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="language" content="ko">
+    <meta name="distribution" content="global">
+    <meta name="rating" content="general">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="canonical" href="https://tarocards.netlify.app/debug-tool.html">
+
+    <!-- ================== 웹앱 및 브라우저 최적화 ================== -->
+    <meta name="theme-color" content="#ffffff">
+    <meta name="application-name" content="Historical Tarot">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Historical Tarot">
+
+    <!-- ================== 아이콘 및 리소스 링크 ================== -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <title>YES/NO 타로 디버그 도구</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #1a1a2e;
+            color: white;
+        }
+        
+        .debug-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .debug-panel {
+            background: #16213e;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #0f3460;
+        }
+        
+        .full-width {
+            grid-column: 1 / -1;
+        }
+        
+        h1, h2 {
+            color: #f0d084;
+            margin-top: 0;
+        }
+        
+        .question-input {
+            width: 100%;
+            min-height: 80px;
+            padding: 15px;
+            border: 2px solid #f0d084;
+            border-radius: 10px;
+            background: rgba(255, 215, 0, 0.1);
+            color: white;
+            font-size: 16px;
+            resize: vertical;
+            margin-bottom: 15px;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #f0d084, #d4af37);
+            color: #1a1a2e;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(240, 208, 132, 0.3);
+        }
+        
+        .btn-small {
+            padding: 8px 15px;
+            font-size: 14px;
+        }
+        
+        .error-log {
+            background: #2d1b1b;
+            border: 1px solid #d32f2f;
+            color: #ff6b6b;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 14px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .success-log {
+            background: #1b2d1b;
+            border: 1px solid #2e7d32;
+            color: #66bb6a;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 14px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .info-log {
+            background: #1b1b2d;
+            border: 1px solid #1976d2;
+            color: #64b5f6;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 14px;
+            max-height: 200px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .status-ok { background: #4caf50; }
+        .status-error { background: #f44336; }
+        .status-warning { background: #ff9800; }
+        
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .result-display {
+            background: rgba(255, 215, 0, 0.05);
+            border: 2px dashed #f0d084;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            min-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 YES/NO 타로 디버그 도구</h1>
+    
+    <div class="debug-container">
+        <!-- 테스트 패널 -->
+        <div class="debug-panel">
+            <h2>🎯 테스트 실행</h2>
+            
+            <textarea id="testQuestion" class="question-input" placeholder="테스트할 질문을 입력하세요...">오늘 하루가 좋을까요?</textarea>
+            
+            <div class="test-grid">
+                <button class="btn btn-small" onclick="runFullTest()">전체 테스트</button>
+                <button class="btn btn-small" onclick="testInstanceCreation()">인스턴스 생성</button>
+                <button class="btn btn-small" onclick="testCardData()">카드 데이터</button>
+                <button class="btn btn-small" onclick="testDrawFunction()">카드 뽑기</button>
+                <button class="btn btn-small" onclick="testDisplayResult()">결과 표시</button>
+                <button class="btn btn-small" onclick="clearLogs()">로그 지우기</button>
+            </div>
+        </div>
+        
+        <!-- 상태 패널 -->
+        <div class="debug-panel">
+            <h2>📊 상태 체크</h2>
+            
+            <div id="statusDisplay">
+                <p><span class="status-indicator status-warning"></span> 상태 확인 중...</p>
+            </div>
+            
+            <button class="btn btn-small" onclick="checkAllStatus()">상태 새로고침</button>
+        </div>
+        
+        <!-- 로그 패널 -->
+        <div class="debug-panel full-width">
+            <h2>📝 실시간 로그</h2>
+            <div id="debugLogs">
+                <!-- 로그가 여기에 표시됩니다 -->
+            </div>
+        </div>
+        
+        <!-- 결과 패널 -->
+        <div class="debug-panel full-width">
+            <h2>🎴 테스트 결과</h2>
+            <div id="testResults" class="result-display">
+                테스트 결과가 여기에 표시됩니다...
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 디버그 로그 시스템
+        class DebugLogger {
+            constructor() {
+                this.logContainer = document.getElementById('debugLogs');
+                this.logs = [];
+                this.maxLogs = 50;
+            }
+            
+            log(message, type = 'info') {
+                const timestamp = new Date().toLocaleTimeString();
+                const logEntry = {
+                    timestamp,
+                    message,
+                    type,
+                    id: Date.now()
+                };
+                
+                this.logs.unshift(logEntry);
+                if (this.logs.length > this.maxLogs) {
+                    this.logs.pop();
+                }
+                
+                this.render();
+                console.log(`[${type.toUpperCase()}] ${message}`);
+            }
+            
+            error(message) { this.log(message, 'error'); }
+            success(message) { this.log(message, 'success'); }
+            info(message) { this.log(message, 'info'); }
+            
+            clear() {
+                this.logs = [];
+                this.render();
+            }
+            
+            render() {
+                const logsByType = this.logs.reduce((acc, log) => {
+                    if (!acc[log.type]) acc[log.type] = [];
+                    acc[log.type].push(log);
+                    return acc;
+                }, {});
+                
+                let html = '';
+                
+                if (logsByType.error && logsByType.error.length > 0) {
+                    html += '<div class="error-log">';
+                    html += '<strong>🚨 오류:</strong><br>';
+                    logsByType.error.forEach(log => {
+                        html += `[${log.timestamp}] ${log.message}<br>`;
+                    });
+                    html += '</div>';
+                }
+                
+                if (logsByType.success && logsByType.success.length > 0) {
+                    html += '<div class="success-log">';
+                    html += '<strong>✅ 성공:</strong><br>';
+                    logsByType.success.forEach(log => {
+                        html += `[${log.timestamp}] ${log.message}<br>`;
+                    });
+                    html += '</div>';
+                }
+                
+                if (logsByType.info && logsByType.info.length > 0) {
+                    html += '<div class="info-log">';
+                    html += '<strong>ℹ️ 정보:</strong><br>';
+                    logsByType.info.forEach(log => {
+                        html += `[${log.timestamp}] ${log.message}<br>`;
+                    });
+                    html += '</div>';
+                }
+                
+                this.logContainer.innerHTML = html || '<p>로그가 없습니다.</p>';
+            }
+        }
+        
+        // 전역 디버거 인스턴스
+        const debugLogger = new DebugLogger();
+        
+        // 상태 체크 함수들
+        function checkAllStatus() {
+            debugLogger.info('전체 상태 체크 시작');
+            
+            const statusDisplay = document.getElementById('statusDisplay');
+            let statusHtml = '';
+            
+            // 스크립트 로딩 상태 확인
+            const yesnoScript = Array.from(document.scripts).find(script => 
+                script.src.includes('yesno-tarot.js') || 
+                (window.parent && Array.from(window.parent.document.scripts).find(s => s.src.includes('yesno-tarot.js')))
+            );
+            
+            if (yesnoScript || (window.parent && window.parent.YesNoTarot)) {
+                statusHtml += '<p><span class="status-indicator status-ok"></span> yesno-tarot.js 스크립트: 로딩됨</p>';
+                debugLogger.success('yesno-tarot.js 스크립트 확인');
+            } else {
+                statusHtml += '<p><span class="status-indicator status-error"></span> yesno-tarot.js 스크립트: 로딩 안됨</p>';
+                debugLogger.error('yesno-tarot.js 스크립트를 찾을 수 없음');
+            }
+            
+            // YesNoTarot 클래스 존재 확인 (부모 창에서도 확인)
+            const YesNoTarotClass = window.YesNoTarot || (window.parent && window.parent.YesNoTarot);
+            if (YesNoTarotClass) {
+                statusHtml += '<p><span class="status-indicator status-ok"></span> YesNoTarot 클래스: 존재</p>';
+                debugLogger.success('YesNoTarot 클래스 발견');
+                // 부모 창의 클래스를 현재 창에 복사
+                if (!window.YesNoTarot && window.parent && window.parent.YesNoTarot) {
+                    window.YesNoTarot = window.parent.YesNoTarot;
+                    debugLogger.info('부모 창에서 YesNoTarot 클래스 복사');
+                }
+            } else {
+                statusHtml += '<p><span class="status-indicator status-error"></span> YesNoTarot 클래스: 없음</p>';
+                debugLogger.error('YesNoTarot 클래스를 찾을 수 없음');
+            }
+            
+            // 인스턴스 존재 확인 (부모 창에서도 확인)
+            const yesNoTarotInstance = window.yesNoTarot || (window.parent && window.parent.yesNoTarot);
+            if (yesNoTarotInstance) {
+                statusHtml += '<p><span class="status-indicator status-ok"></span> yesNoTarot 인스턴스: 존재</p>';
+                debugLogger.success('yesNoTarot 인스턴스 발견');
+                
+                // 부모 창의 인스턴스를 현재 창에 참조
+                if (!window.yesNoTarot && window.parent && window.parent.yesNoTarot) {
+                    window.yesNoTarot = window.parent.yesNoTarot;
+                    debugLogger.info('부모 창에서 yesNoTarot 인스턴스 참조');
+                }
+                
+                // 카드 데이터 확인
+                if (yesNoTarotInstance.yesNoCards) {
+                    const cardData = yesNoTarotInstance.yesNoCards;
+                    statusHtml += `<p><span class="status-indicator status-ok"></span> 카드 데이터: YES(${cardData.YES?.length || 0}), NO(${cardData.NO?.length || 0}), MAYBE(${cardData.MAYBE?.length || 0})</p>`;
+                    debugLogger.success(`카드 데이터 확인 완료: YES=${cardData.YES?.length}, NO=${cardData.NO?.length}, MAYBE=${cardData.MAYBE?.length}`);
+                } else {
+                    statusHtml += '<p><span class="status-indicator status-error"></span> 카드 데이터: 없음</p>';
+                    debugLogger.error('카드 데이터가 없음');
+                }
+            } else {
+                statusHtml += '<p><span class="status-indicator status-error"></span> yesNoTarot 인스턴스: 없음</p>';
+                debugLogger.error('yesNoTarot 인스턴스를 찾을 수 없음');
+            }
+            
+            // DOM 요소 확인
+            const yesnoQuestion = document.getElementById('yesnoQuestion');
+            const yesnoDrawBtn = document.getElementById('yesnoDrawBtn');
+            const yesnoResult = document.getElementById('yesnoResult');
+            
+            statusHtml += `<p><span class="status-indicator ${yesnoQuestion ? 'status-ok' : 'status-error'}"></span> yesnoQuestion 요소: ${yesnoQuestion ? '존재' : '없음'}</p>`;
+            statusHtml += `<p><span class="status-indicator ${yesnoDrawBtn ? 'status-ok' : 'status-error'}"></span> yesnoDrawBtn 요소: ${yesnoDrawBtn ? '존재' : '없음'}</p>`;
+            statusHtml += `<p><span class="status-indicator ${yesnoResult ? 'status-ok' : 'status-error'}"></span> yesnoResult 요소: ${yesnoResult ? '존재' : '없음'}</p>`;
+            
+            // 타로 카드 매니저 확인
+            if (window.tarotCardManager) {
+                statusHtml += '<p><span class="status-indicator status-ok"></span> tarotCardManager: 존재</p>';
+                debugLogger.success('tarotCardManager 발견');
+            } else {
+                statusHtml += '<p><span class="status-indicator status-warning"></span> tarotCardManager: 없음 (폴백 데이터 사용)</p>';
+                debugLogger.info('tarotCardManager 없음, 폴백 데이터 사용');
+            }
+            
+            statusDisplay.innerHTML = statusHtml;
+            debugLogger.success('상태 체크 완료');
+        }
+        
+        // 테스트 함수들
+        function testInstanceCreation() {
+            debugLogger.info('인스턴스 생성 테스트 시작');
+            
+            try {
+                // 클래스 찾기 (현재 창 또는 부모 창에서)
+                const YesNoTarotClass = window.YesNoTarot || (window.parent && window.parent.YesNoTarot);
+                
+                if (!YesNoTarotClass) {
+                    throw new Error('YesNoTarot 클래스를 찾을 수 없습니다. 메인 페이지를 먼저 로드해주세요.');
+                }
+                
+                debugLogger.success('YesNoTarot 클래스 발견');
+                
+                const testInstance = new YesNoTarotClass();
+                debugLogger.success('YesNoTarot 인스턴스 생성 성공');
+                
+                // 초기화 대기
+                setTimeout(() => {
+                    if (testInstance.yesNoCards) {
+                        debugLogger.success('카드 데이터 초기화 성공');
+                        debugLogger.info(`카드 데이터: YES=${testInstance.yesNoCards.YES?.length}, NO=${testInstance.yesNoCards.NO?.length}, MAYBE=${testInstance.yesNoCards.MAYBE?.length}`);
+                    } else {
+                        debugLogger.error('카드 데이터 초기화 실패');
+                    }
+                }, 1000);
+                
+            } catch (error) {
+                debugLogger.error(`인스턴스 생성 실패: ${error.message}`);
+            }
+        }
+        
+        function testCardData() {
+            debugLogger.info('카드 데이터 테스트 시작');
+            
+            if (!window.yesNoTarot) {
+                debugLogger.error('yesNoTarot 인스턴스가 없습니다');
+                return;
+            }
+            
+            const cards = window.yesNoTarot.yesNoCards;
+            if (!cards) {
+                debugLogger.error('카드 데이터가 없습니다');
+                return;
+            }
+            
+            debugLogger.info(`YES 카드: ${cards.YES?.length || 0}개`);
+            debugLogger.info(`NO 카드: ${cards.NO?.length || 0}개`);
+            debugLogger.info(`MAYBE 카드: ${cards.MAYBE?.length || 0}개`);
+            
+            // 첫 번째 카드 샘플 출력
+            if (cards.YES && cards.YES[0]) {
+                debugLogger.info(`YES 카드 샘플: ${cards.YES[0].name} (${cards.YES[0].korean})`);
+            }
+            
+            debugLogger.success('카드 데이터 테스트 완료');
+        }
+        
+        function testDrawFunction() {
+            debugLogger.info('카드 뽑기 함수 테스트 시작');
+            
+            const question = document.getElementById('testQuestion').value.trim();
+            if (!question) {
+                debugLogger.error('질문이 비어있습니다');
+                return;
+            }
+            
+            try {
+                // 인스턴스 확인 (부모 창 또는 현재 창)
+                const yesNoTarotInstance = window.yesNoTarot || (window.parent && window.parent.yesNoTarot);
+                if (!yesNoTarotInstance) {
+                    throw new Error('yesNoTarot 인스턴스가 없습니다. 메인 페이지를 먼저 로드해주세요.');
+                }
+                
+                debugLogger.info(`테스트 질문: "${question}"`);
+                
+                // 부모 창의 요소에 질문 설정 (있다면)
+                if (window.parent && window.parent.document) {
+                    const parentQuestionInput = window.parent.document.getElementById('yesnoQuestion');
+                    if (parentQuestionInput) {
+                        parentQuestionInput.value = question;
+                        debugLogger.success('부모 창의 질문 입력 필드에 설정 완료');
+                    } else {
+                        debugLogger.info('부모 창에서 질문 입력 필드를 찾을 수 없음 (정상 - 디버그 모드)');
+                    }
+                }
+                
+                // 답변 타입 결정 테스트
+                yesNoTarotInstance.currentQuestion = question;
+                const answerType = yesNoTarotInstance.determineAnswerType(question);
+                debugLogger.info(`결정된 답변 타입: ${answerType}`);
+                
+                // 카드 데이터 확인
+                if (!yesNoTarotInstance.yesNoCards) {
+                    throw new Error('카드 데이터가 없습니다');
+                }
+                
+                const cardPool = yesNoTarotInstance.yesNoCards[answerType];
+                if (!cardPool || cardPool.length === 0) {
+                    throw new Error(`${answerType} 카드 풀이 비어있습니다`);
+                }
+                
+                const randomCard = cardPool[Math.floor(Math.random() * cardPool.length)];
+                debugLogger.success(`선택된 카드: ${randomCard.name} (${randomCard.korean})`);
+                
+                // 디버그 도구의 결과 영역에 표시
+                displayDebugResult(randomCard, answerType, question);
+                debugLogger.success('결과 표시 완료');
+                
+            } catch (error) {
+                debugLogger.error(`카드 뽑기 테스트 실패: ${error.message}`);
+            }
+        }
+        
+        // 디버그 도구 전용 결과 표시 함수
+        function displayDebugResult(card, answerType, question) {
+            const testResults = document.getElementById('testResults');
+            
+            const answerColors = {
+                'YES': '#4CAF50',
+                'NO': '#f44336', 
+                'MAYBE': '#FF9800'
+            };
+
+            const answerEmojis = {
+                'YES': '✅',
+                'NO': '❌',
+                'MAYBE': '🤔'
+            };
+
+            testResults.innerHTML = `
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <h3 style="color: #f0d084;">🔮 타로 카드 결과</h3>
+                    <p style="background: rgba(255,255,255,0.1); padding: 10px; border-radius: 5px; margin: 10px 0;">
+                        <strong>질문:</strong> "${question}"
+                    </p>
+                </div>
+                
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <h2 style="color: ${answerColors[answerType]}; margin: 15px 0;">
+                        ${answerEmojis[answerType]} ${answerType}
+                    </h2>
+                    <div style="background: ${answerColors[answerType]}; height: 6px; width: ${card.confidence}%; border-radius: 3px; margin: 10px auto; max-width: 200px;"></div>
+                    <p style="color: #ccc;">확신도: ${card.confidence}%</p>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; margin: 20px 0;">
+                    <h4 style="color: #f0d084; margin-top: 0;">${card.name} (${card.korean})</h4>
+                    <p><strong>의미:</strong> ${card.meaning}</p>
+                    <p><strong>조언:</strong> ${card.advice}</p>
+                    ${card.image_url ? `<img src="${card.image_url}" alt="${card.name}" style="max-width: 150px; max-height: 200px; object-fit: contain; display: block; margin: 15px auto; border-radius: 8px;" onerror="this.style.display='none'">` : ''}
+                </div>
+                
+                <div style="text-align: center; margin-top: 20px;">
+                    <button onclick="testDrawFunction()" style="background: linear-gradient(135deg, #f0d084, #d4af37); color: #1a1a2e; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer;">
+                        🎯 다시 뽑기
+                    </button>
+                </div>
+            `;
+        }
+        
+        function testDisplayResult() {
+            debugLogger.info('결과 표시 테스트 시작');
+            
+            const testCard = {
+                name: 'Test Card',
+                korean: '테스트 카드',
+                meaning: '이것은 테스트용 카드입니다.',
+                advice: '테스트가 성공적으로 진행되고 있습니다.',
+                confidence: 85,
+                image_url: 'image2/The Sun.jpg'
+            };
+            
+            const testResults = document.getElementById('testResults');
+            testResults.innerHTML = `
+                <div style="text-align: center; color: #4CAF50;">
+                    <h3>✅ YES</h3>
+                    <h4>${testCard.name} (${testCard.korean})</h4>
+                    <p><strong>의미:</strong> ${testCard.meaning}</p>
+                    <p><strong>조언:</strong> ${testCard.advice}</p>
+                    <p><strong>확신도:</strong> ${testCard.confidence}%</p>
+                </div>
+            `;
+            
+            debugLogger.success('테스트 결과 표시 완료');
+        }
+        
+        function runFullTest() {
+            debugLogger.info('=== 전체 테스트 시작 ===');
+            
+            checkAllStatus();
+            
+            setTimeout(() => {
+                testInstanceCreation();
+            }, 500);
+            
+            setTimeout(() => {
+                testCardData();
+            }, 1000);
+            
+            setTimeout(() => {
+                testDrawFunction();
+            }, 1500);
+            
+            setTimeout(() => {
+                debugLogger.success('=== 전체 테스트 완료 ===');
+            }, 2000);
+        }
+        
+        function clearLogs() {
+            debugLogger.clear();
+        }
+        
+        // 페이지 로드 시 초기화
+        document.addEventListener('DOMContentLoaded', function() {
+            debugLogger.info('디버그 도구 로드 완료');
+            
+            // 메인 페이지의 스크립트 로드 시도
+            if (!window.YesNoTarot && window.parent !== window) {
+                debugLogger.info('부모 창에서 YesNoTarot 클래스 찾는 중...');
+                
+                if (window.parent.YesNoTarot) {
+                    window.YesNoTarot = window.parent.YesNoTarot;
+                    debugLogger.success('부모 창에서 YesNoTarot 클래스 가져옴');
+                }
+                
+                if (window.parent.yesNoTarot) {
+                    window.yesNoTarot = window.parent.yesNoTarot;
+                    debugLogger.success('부모 창에서 yesNoTarot 인스턴스 가져옴');
+                }
+            }
+            
+            // yesno-tarot.js 직접 로드 시도
+            if (!window.YesNoTarot) {
+                debugLogger.info('YesNoTarot 클래스 로드 시도...');
+                const script = document.createElement('script');
+                script.src = 'js/yesno-tarot.js';
+                script.onload = function() {
+                    debugLogger.success('yesno-tarot.js 스크립트 로드 완료');
+                    setTimeout(checkAllStatus, 500);
+                };
+                script.onerror = function() {
+                    debugLogger.error('yesno-tarot.js 스크립트 로드 실패');
+                };
+                document.head.appendChild(script);
+            }
+            
+            // 1초 후 자동으로 상태 체크
+            setTimeout(() => {
+                checkAllStatus();
+            }, 1000);
+        });
+        
+        // 에러 캐치
+        window.addEventListener('error', function(event) {
+            debugLogger.error(`JavaScript 에러: ${event.error?.message || event.message} (${event.filename}:${event.lineno})`);
+        });
+        
+        // 콘솔 에러도 캐치
+        const originalConsoleError = console.error;
+        console.error = function(...args) {
+            debugLogger.error(args.join(' '));
+            originalConsoleError.apply(console, args);
+        };
+    </script>
+</body>
+</html>

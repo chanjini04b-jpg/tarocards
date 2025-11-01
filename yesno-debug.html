@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <!-- ================== 기본 메타 태그 (SEO) ================== -->
+    <meta name="title" content="YES/NO 타로 질문예시 버튼 테스트">
+    <meta name="description" content="YES/NO 타로 질문예시 버튼 및 기능 테스트 페이지">
+    <meta name="keywords" content="타로, YES/NO, 질문예시, 테스트, 타로카드, 시스템 점검">
+    <meta name="author" content="Historical Tarot Team">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- ================== Open Graph 메타 태그 ================== -->
+    <meta property="og:title" content="YES/NO 타로 질문예시 버튼 테스트">
+    <meta property="og:description" content="YES/NO 타로 질문예시 버튼 및 기능 테스트 페이지">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tarocards.netlify.app/yesno-debug.html">
+    <meta property="og:image" content="https://tarocards.netlify.app/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="YES/NO 타로 질문예시 테스트 대표 이미지">
+    <meta property="og:site_name" content="Historical Tarot">
+    <meta property="og:locale" content="ko_KR">
+
+    <!-- ================== Twitter 카드 메타 태그 ================== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="YES/NO 타로 질문예시 버튼 테스트">
+    <meta name="twitter:description" content="YES/NO 타로 질문예시 버튼 및 기능 테스트 페이지">
+    <meta name="twitter:image" content="https://tarocards.netlify.app/images/og-image.jpg">
+    <meta name="twitter:image:alt" content="YES/NO 타로 질문예시 테스트 대표 이미지">
+    <meta name="twitter:site" content="@historicaltarot">
+    <meta name="twitter:creator" content="@historicaltarot">
+
+    <!-- ================== SEO 및 사용자 경험 보완 태그 ================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="language" content="ko">
+    <meta name="distribution" content="global">
+    <meta name="rating" content="general">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="canonical" href="https://tarocards.netlify.app/yesno-debug.html">
+
+    <!-- ================== 웹앱 및 브라우저 최적화 ================== -->
+    <meta name="theme-color" content="#ffffff">
+    <meta name="application-name" content="Historical Tarot">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Historical Tarot">
+
+    <!-- ================== 아이콘 및 리소스 링크 ================== -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <title>YES/NO 타로 질문예시 버튼 테스트</title>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #f0d084;
+        }
+        
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+        
+        .example-questions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .example-tag {
+            background: rgba(255, 215, 0, 0.1);
+            color: #f0d084;
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            display: inline-block;
+        }
+        
+        .example-tag:hover {
+            background: rgba(255, 215, 0, 0.2);
+            border-color: rgba(255, 215, 0, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
+        }
+        
+        .example-tag.clicked {
+            background: rgba(255, 215, 0, 0.3);
+            border-color: rgba(255, 215, 0, 0.7);
+            transform: scale(1.05);
+        }
+        
+        .question-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            color: #f0f0f0;
+            font-size: 16px;
+            line-height: 1.5;
+            resize: vertical;
+            transition: all 0.3s ease;
+            min-height: 100px;
+        }
+        
+        .question-input:focus {
+            outline: none;
+            border-color: rgba(255, 215, 0, 0.6);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .test-log {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+        
+        .log-entry {
+            margin-bottom: 5px;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        
+        .log-info {
+            color: #4ade80;
+        }
+        
+        .log-error {
+            color: #ef4444;
+            background: rgba(239, 68, 68, 0.1);
+        }
+        
+        .log-warn {
+            color: #f59e0b;
+        }
+        
+        .test-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+            transition: transform 0.2s;
+        }
+        
+        .test-button:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔮 YES/NO 타로 질문예시 버튼 테스트</h1>
+        
+        <div class="test-section">
+            <h2>📝 질문 입력 영역</h2>
+            <textarea id="yesnoQuestion" class="question-input" placeholder="여기에 질문이 자동으로 입력됩니다..."></textarea>
+        </div>
+        
+        <div class="test-section">
+            <h2>💡 예시 질문들 (클릭 테스트)</h2>
+            <div class="example-questions">
+                <span class="example-tag">이 일을 시작해야 할까요?</span>
+                <span class="example-tag">그 사람이 나를 좋아할까요?</span>
+                <span class="example-tag">지금 이직하는 게 맞을까요?</span>
+                <span class="example-tag">이번 투자가 성공할까요?</span>
+                <span class="example-tag">오늘 고백하면 좋을까요?</span>
+                <span class="example-tag">새로운 도전을 해볼까요?</span>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>🧪 테스트 도구</h2>
+            <button class="test-button" onclick="testFunction1()">함수 존재 확인</button>
+            <button class="test-button" onclick="testFunction2()">이벤트 리스너 테스트</button>
+            <button class="test-button" onclick="testFunction3()">스크립트 로딩 확인</button>
+            <button class="test-button" onclick="clearLog()">로그 지우기</button>
+        </div>
+        
+        <div class="test-section">
+            <h2>📊 테스트 로그</h2>
+            <div id="testLog" class="test-log">
+                <div class="log-entry log-info">테스트 페이지가 로드되었습니다.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- YES/NO 타로 스크립트 로드 -->
+    <script src="js/yesno-tarot.js"></script>
+
+    <script>
+        // 로그 기록 함수
+        function addLog(message, type = 'info') {
+            const logContainer = document.getElementById('testLog');
+            const logEntry = document.createElement('div');
+            logEntry.className = `log-entry log-${type}`;
+            logEntry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            logContainer.appendChild(logEntry);
+            logContainer.scrollTop = logContainer.scrollHeight;
+        }
+
+        // 로그 지우기
+        function clearLog() {
+            document.getElementById('testLog').innerHTML = '<div class="log-entry log-info">로그가 지워졌습니다.</div>';
+        }
+
+        // 테스트 함수들
+        function testFunction1() {
+            addLog('=== 함수 존재 확인 테스트 ===', 'info');
+            
+            if (typeof window.setYesNoQuestion === 'function') {
+                addLog('✅ setYesNoQuestion 함수가 존재합니다', 'info');
+                
+                // 함수 직접 호출 테스트
+                try {
+                    window.setYesNoQuestion('테스트 질문입니다');
+                    addLog('✅ setYesNoQuestion 함수 호출 성공', 'info');
+                } catch (error) {
+                    addLog(`❌ setYesNoQuestion 함수 호출 실패: ${error.message}`, 'error');
+                }
+            } else {
+                addLog('❌ setYesNoQuestion 함수가 존재하지 않습니다', 'error');
+            }
+            
+            if (typeof window.yesNoTarot !== 'undefined') {
+                addLog('✅ yesNoTarot 인스턴스가 존재합니다', 'info');
+            } else {
+                addLog('❌ yesNoTarot 인스턴스가 존재하지 않습니다', 'error');
+            }
+        }
+
+        function testFunction2() {
+            addLog('=== 이벤트 리스너 테스트 ===', 'info');
+            
+            const exampleTags = document.querySelectorAll('.example-tag');
+            addLog(`찾은 예시 태그 수: ${exampleTags.length}개`, 'info');
+            
+            exampleTags.forEach((tag, index) => {
+                // 기존 이벤트 리스너 제거
+                tag.removeEventListener('click', tag.testClickHandler);
+                
+                // 새 이벤트 리스너 추가
+                tag.testClickHandler = function() {
+                    addLog(`예시 태그 ${index + 1} 클릭됨: "${this.textContent}"`, 'info');
+                    
+                    // 시각적 피드백
+                    this.classList.add('clicked');
+                    setTimeout(() => {
+                        this.classList.remove('clicked');
+                    }, 300);
+                    
+                    // setYesNoQuestion 호출
+                    if (typeof window.setYesNoQuestion === 'function') {
+                        window.setYesNoQuestion(this.textContent);
+                        addLog(`setYesNoQuestion 호출: "${this.textContent}"`, 'info');
+                    } else {
+                        addLog('setYesNoQuestion 함수를 찾을 수 없습니다', 'error');
+                    }
+                };
+                
+                tag.addEventListener('click', tag.testClickHandler);
+            });
+            
+            addLog('모든 예시 태그에 이벤트 리스너가 추가되었습니다', 'info');
+        }
+
+        function testFunction3() {
+            addLog('=== 스크립트 로딩 확인 ===', 'info');
+            
+            const scripts = document.querySelectorAll('script[src]');
+            addLog(`로드된 스크립트 수: ${scripts.length}개`, 'info');
+            
+            scripts.forEach(script => {
+                addLog(`스크립트: ${script.src}`, 'info');
+            });
+            
+            // YesNoTarot 클래스 확인
+            if (typeof YesNoTarot !== 'undefined') {
+                addLog('✅ YesNoTarot 클래스가 로드되었습니다', 'info');
+            } else {
+                addLog('❌ YesNoTarot 클래스를 찾을 수 없습니다', 'error');
+            }
+        }
+
+        // 페이지 로드 시 자동 테스트
+        document.addEventListener('DOMContentLoaded', function() {
+            addLog('DOM 로드 완료', 'info');
+            
+            // 2초 후 자동 테스트 실행
+            setTimeout(() => {
+                testFunction1();
+                setTimeout(() => {
+                    testFunction2();
+                    setTimeout(() => {
+                        testFunction3();
+                    }, 500);
+                }, 500);
+            }, 2000);
+        });
+
+        // 에러 캐치
+        window.addEventListener('error', function(e) {
+            addLog(`JavaScript 오류: ${e.message} (${e.filename}:${e.lineno})`, 'error');
+        });
+
+        // 콘솔 로그 캐치
+        const originalLog = console.log;
+        const originalError = console.error;
+        const originalWarn = console.warn;
+
+        console.log = function(...args) {
+            addLog(`Console.log: ${args.join(' ')}`, 'info');
+            originalLog.apply(console, args);
+        };
+
+        console.error = function(...args) {
+            addLog(`Console.error: ${args.join(' ')}`, 'error');
+            originalError.apply(console, args);
+        };
+
+        console.warn = function(...args) {
+            addLog(`Console.warn: ${args.join(' ')}`, 'warn');
+            originalWarn.apply(console, args);
+        };
+    </script>
+</body>
+</html>

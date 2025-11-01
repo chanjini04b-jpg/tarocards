@@ -1,0 +1,64 @@
+<svg width="150" height="150" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="balancedGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#66bb6a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4caf50;stop-opacity:0.8" />
+    </radialGradient>
+    <filter id="balancedGlow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="75" cy="75" r="70" fill="url(#balancedGradient)" filter="url(#balancedGlow)" opacity="0.9"/>
+  
+  <!-- Balanced energy symbol - Yin Yang style balance -->
+  <g transform="translate(75,75)">
+    <!-- Perfect circle representing balance -->
+    <circle cx="0" cy="0" r="45" fill="none" stroke="#ffffff" stroke-width="3"/>
+    
+    <!-- Inner harmony symbol -->
+    <g fill="#ffffff" opacity="0.8">
+      <!-- Curved balance line -->
+      <path d="M-30,0 Q0,-30 30,0 Q0,30 -30,0" fill="rgba(255,255,255,0.3)"/>
+      
+      <!-- Balance points -->
+      <circle cx="-15" cy="0" r="8"/>
+      <circle cx="15" cy="0" r="8"/>
+      
+      <!-- Small dots inside -->
+      <circle cx="-15" cy="0" r="3" fill="#4caf50"/>
+      <circle cx="15" cy="0" r="3" fill="#4caf50"/>
+    </g>
+    
+    <!-- Equilibrium rays -->
+    <g stroke="#ffffff" stroke-width="2" opacity="0.6">
+      <path d="M0,-50 L0,-55"/>
+      <path d="M35,-35 L40,-40"/>
+      <path d="M35,35 L40,40"/>
+      <path d="M0,50 L0,55"/>
+      <path d="M-35,35 L-40,40"/>
+      <path d="M-35,-35 L-40,-40"/>
+    </g>
+  </g>
+  
+  <!-- Harmony particles -->
+  <g opacity="0.7">
+    <circle cx="30" cy="30" r="2" fill="#81c784">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="120" cy="120" r="2" fill="#81c784">
+      <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="30" cy="120" r="1.5" fill="#81c784">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="1.8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="120" cy="30" r="1.8" fill="#81c784">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="2.1s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>

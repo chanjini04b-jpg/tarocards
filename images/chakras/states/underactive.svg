@@ -1,0 +1,103 @@
+<svg width="150" height="150" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="underactiveGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#64b5f6;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#2196f3;stop-opacity:0.4" />
+    </radialGradient>
+    <filter id="underactiveGlow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="75" cy="75" r="70" fill="url(#underactiveGradient)" filter="url(#underactiveGlow)" opacity="0.7"/>
+  
+  <!-- Underactive energy symbol - Dimmed, weak energy -->
+  <g transform="translate(75,75)">
+    <!-- Weak central core -->
+    <circle cx="0" cy="0" r="30" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.5" stroke-dasharray="5,5">
+      <animate attributeName="opacity" values="0.3;0.6;0.3" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Inner weak circle -->
+    <circle cx="0" cy="0" r="15" fill="rgba(255,255,255,0.3)" opacity="0.6">
+      <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Weak, sparse rays -->
+    <g stroke="#ffffff" stroke-width="1" fill="none" opacity="0.4">
+      <path d="M0,-40 L0,-45">
+        <animate attributeName="opacity" values="0.2;0.5;0.2" dur="3s" repeatCount="indefinite"/>
+      </path>
+      <path d="M28,-28 L33,-33">
+        <animate attributeName="opacity" values="0.1;0.4;0.1" dur="3.2s" repeatCount="indefinite"/>
+      </path>
+      <path d="M40,0 L45,0">
+        <animate attributeName="opacity" values="0.3;0.6;0.3" dur="2.8s" repeatCount="indefinite"/>
+      </path>
+      <path d="M28,28 L33,33">
+        <animate attributeName="opacity" values="0.2;0.5;0.2" dur="3.1s" repeatCount="indefinite"/>
+      </path>
+      <path d="M0,40 L0,45">
+        <animate attributeName="opacity" values="0.1;0.4;0.1" dur="2.9s" repeatCount="indefinite"/>
+      </path>
+      <path d="M-28,28 L-33,33">
+        <animate attributeName="opacity" values="0.3;0.6;0.3" dur="3.3s" repeatCount="indefinite"/>
+      </path>
+      <path d="M-40,0 L-45,0">
+        <animate attributeName="opacity" values="0.2;0.5;0.2" dur="2.7s" repeatCount="indefinite"/>
+      </path>
+      <path d="M-28,-28 L-33,-33">
+        <animate attributeName="opacity" values="0.1;0.4;0.1" dur="3.4s" repeatCount="indefinite"/>
+      </path>
+    </g>
+    
+    <!-- Dimmed energy points -->
+    <g fill="rgba(255,255,255,0.3)">
+      <circle cx="0" cy="-20" r="2" opacity="0.4">
+        <animate attributeName="opacity" values="0.2;0.5;0.2" dur="2.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="14" cy="-14" r="1.5" opacity="0.3">
+        <animate attributeName="opacity" values="0.1;0.4;0.1" dur="2.8s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="20" cy="0" r="2" opacity="0.5">
+        <animate attributeName="opacity" values="0.3;0.6;0.3" dur="2.3s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="14" cy="14" r="1.5" opacity="0.3">
+        <animate attributeName="opacity" values="0.2;0.4;0.2" dur="2.6s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="0" cy="20" r="2" opacity="0.4">
+        <animate attributeName="opacity" values="0.1;0.5;0.1" dur="2.9s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="-14" cy="14" r="1.5" opacity="0.3">
+        <animate attributeName="opacity" values="0.2;0.4;0.2" dur="2.4s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="-20" cy="0" r="2" opacity="0.5">
+        <animate attributeName="opacity" values="0.3;0.6;0.3" dur="2.7s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="-14" cy="-14" r="1.5" opacity="0.3">
+        <animate attributeName="opacity" values="0.1;0.4;0.1" dur="2.2s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+  </g>
+  
+  <!-- Weak energy particles -->
+  <g opacity="0.4">
+    <circle cx="25" cy="35" r="1.5" fill="#90caf9">
+      <animate attributeName="opacity" values="0.2;0.5;0.2" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="125" cy="115" r="1" fill="#90caf9">
+      <animate attributeName="opacity" values="0.1;0.4;0.1" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="35" cy="115" r="1.2" fill="#90caf9">
+      <animate attributeName="opacity" values="0.3;0.6;0.3" dur="2.8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="115" cy="35" r="1" fill="#90caf9">
+      <animate attributeName="opacity" values="0.2;0.4;0.2" dur="3.2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>

@@ -1,0 +1,97 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="thirdEyeGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#7e57c2;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#673ab7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4527a0;stop-opacity:1" />
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="url(#thirdEyeGradient)" filter="url(#glow)" opacity="0.9"/>
+  
+  <!-- Third Eye chakra symbol - Two petals with Om -->
+  <g transform="translate(100,100)">
+    <!-- Two large petals -->
+    <g stroke="#ffffff" stroke-width="3" fill="rgba(255,255,255,0.3)">
+      <!-- Left petal -->
+      <path d="M-50,0 Q-80,-40 -50,-80 Q-20,-40 -50,0" transform="rotate(-15)"/>
+      <!-- Right petal -->
+      <path d="M50,0 Q80,-40 50,-80 Q20,-40 50,0" transform="rotate(15)"/>
+    </g>
+    
+    <!-- Inner circle -->
+    <circle cx="0" cy="0" r="55" fill="none" stroke="#ffffff" stroke-width="2"/>
+    
+    <!-- Third Eye symbol -->
+    <g fill="#ffffff">
+      <!-- Eye shape -->
+      <ellipse cx="0" cy="-5" rx="25" ry="12" opacity="0.9"/>
+      <!-- Pupil -->
+      <circle cx="0" cy="-5" r="8" fill="#4527a0"/>
+      <!-- Light reflection -->
+      <circle cx="-3" cy="-8" r="2" fill="#ffffff"/>
+    </g>
+    
+    <!-- Mystical triangle -->
+    <path d="M-15,10 L15,10 L0,-10 Z" fill="#ffffff" opacity="0.7"/>
+    
+    <!-- Center Sanskrit symbol OM -->
+    <text x="0" y="45" text-anchor="middle" fill="#ffffff" font-family="serif" font-size="24" font-weight="bold">ॐ</text>
+  </g>
+  
+  <!-- Mystical energy rays -->
+  <g opacity="0.7" stroke="#e1bee7" stroke-width="1" fill="none">
+    <path d="M100,30 L100,20">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M140,60 L150,50">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="1.8s" repeatCount="indefinite"/>
+    </path>
+    <path d="M140,140 L150,150">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="2.2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M60,140 L50,150">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="1.9s" repeatCount="indefinite"/>
+    </path>
+    <path d="M60,60 L50,50">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2.1s" repeatCount="indefinite"/>
+    </path>
+    <path d="M100,170 L100,180">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="1.7s" repeatCount="indefinite"/>
+    </path>
+    
+    <!-- Diagonal rays -->
+    <path d="M125,75 L135,65">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="2.3s" repeatCount="indefinite"/>
+    </path>
+    <path d="M75,125 L65,135">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="1.6s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- Intuition sparkles -->
+  <g opacity="0.8">
+    <g fill="#e1bee7">
+      <circle cx="70" cy="45" r="1">
+        <animate attributeName="opacity" values="0;1;0" dur="1.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="130" cy="155" r="1.5">
+        <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="45" cy="120" r="1.2">
+        <animate attributeName="opacity" values="0;1;0" dur="1.8s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="155" cy="80" r="1">
+        <animate attributeName="opacity" values="0;1;0" dur="2.2s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+  </g>
+</svg>

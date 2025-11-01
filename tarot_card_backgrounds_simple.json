@@ -1,0 +1,112 @@
+{
+  "MA0": {
+    "name_ko": "바보",
+    "background_ko": "마추픽추 (Machu Picchu)",
+    "description_ko": "절벽 위의 웅장한 잉카 유적지. 미지의 세계로 나아가는 '바보'의 새로운 여정 시작과 무한한 잠재력을 상징합니다."
+  },
+  "MA1": {
+    "name_ko": "마법사",
+    "background_ko": "피라미드 (Pyramids of Giza)",
+    "description_ko": "인간의 의지로 창조된 거대한 건축물. '마법사'의 의지, 집중력, 그리고 우주적 힘을 현실로 끌어내는 능력을 상징합니다."
+  },
+  "MA2": {
+    "name_ko": "고위 여사제",
+    "background_ko": "델포이 신전 (Temple of Apollo, Delphi)",
+    "description_ko": "고대 그리스의 신탁이 내려졌던 신비의 장소. '고위 여사제'의 깊은 직관, 잠재의식, 그리고 숨겨진 지혜를 상징합니다."
+  },
+  "MA3": {
+    "name_ko": "여제",
+    "background_ko": "아르테미스 신전 (Temple of Artemis, Ephesus)",
+    "description_ko": "풍요의 여신에게 봉헌된 신전. '여제'의 다산, 풍요, 창조적인 에너지, 그리고 자연과의 조화를 상징합니다."
+  },
+  "MA4": {
+    "name_ko": "황제",
+    "background_ko": "로마 포럼 (Roman Forum)",
+    "description_ko": "고대 로마 제국의 정치적 중심지. '황제'의 권위, 안정된 구조, 질서, 그리고 강력한 리더십을 상징합니다."
+  },
+  "MA5": {
+    "name_ko": "교황",
+    "background_ko": "앙코르와트 (Angkor Wat, Cambodia)",
+    "description_ko": "종교적 전통과 가르침의 웅장한 사원. '교황'의 전통, 영적 교육, 그리고 조직화된 종교적 권위를 상징합니다."
+  },
+  "MA6": {
+    "name_ko": "연인",
+    "background_ko": "타지마할 (Taj Mahal, India)",
+    "description_ko": "영원한 사랑의 헌신으로 지어진 건축물. '연인' 카드의 깊은 사랑, 조화로운 관계, 그리고 중대한 선택의 순간을 상징합니다."
+  },
+  "MA7": {
+    "name_ko": "전차",
+    "background_ko": "카르나크 신전 (Karnak Temple, Egypt)",
+    "description_ko": "고대 이집트의 강력한 승리와 위업을 기념하는 신전. '전차'의 강력한 추진력, 확고한 통제, 그리고 최종적인 승리를 상징합니다."
+  },
+  "MA8": {
+    "name_ko": "힘",
+    "background_ko": "앙코르와트 (Angkor Wat, Cambodia)",
+    "description_ko": "자연의 힘에 맞서 인내하며 스스로를 지킨 사원. '힘' 카드의 부드러운 인내, 내면의 용기, 그리고 연민을 통한 통제를 상징합니다."
+  },
+  "MA9": {
+    "name_ko": "은둔자",
+    "background_ko": "몽생미셸 수도원 (Mont Saint-Michel Abbey)",
+    "description_ko": "외딴 섬에 고립된 영성 추구의 상징. '은둔자'의 고독한 성찰, 내면 검색, 그리고 경험에서 오는 지혜를 상징합니다."
+  },
+  "MA10": {
+    "name_ko": "운명의 수레바퀴",
+    "background_ko": "로마 콜로세움 (Roman Colosseum)",
+    "description_ko": "제국의 흥망성쇠를 목격한 유적. '운명의 수레바퀴'의 순환적인 변화, 운명적 전환점, 그리고 행운의 기회를 상징합니다."
+  },
+  "MA11": {
+    "name_ko": "정의",
+    "background_ko": "파르테논 신전 (Parthenon, Greece)",
+    "description_ko": "민주주의와 법의 기원지. '정의' 카드의 공정함, 진실, 이성적 판단, 그리고 윤리적 균형을 상징합니다."
+  },
+  "MA12": {
+    "name_ko": "매달린 사람",
+    "background_ko": "스톤헨지 (Stonehenge, UK)",
+    "description_ko": "시간이 멈춘 듯한 고대 의식의 장소. '매달린 사람'의 자발적 희생, 새로운 관점, 그리고 세상과의 일시적 단절을 통한 통찰을 상징합니다."
+  },
+  "MA13": {
+    "name_ko": "죽음",
+    "background_ko": "치첸이트사 (Chichen Itza, Mexico)",
+    "description_ko": "마야 문명의 종말과 새로운 시작을 상징하는 유적. '죽음' 카드의 필수적인 종결, 변화, 그리고 새로운 단계로의 전환을 상징합니다."
+  },
+  "MA14": {
+    "name_ko": "절제",
+    "background_ko": "나스카 라인 (Nazca Lines, Peru)",
+    "description_ko": "거대한 규모의 정교한 기하학적 균형. '절제' 카드의 완벽한 조화, 인내심, 그리고 중용을 통한 치유를 상징합니다."
+  },
+  "MA15": {
+    "name_ko": "악마",
+    "background_ko": "바빌론의 폐허 (Ruins of Babylon)",
+    "description_ko": "고대 문명의 탐욕과 오만의 상징. '악마' 카드의 집착, 구속, 물질주의, 그리고 벗어나야 할 유혹을 상징합니다."
+  },
+  "MA16": {
+    "name_ko": "탑",
+    "background_ko": "폼페이 유적 (Pompeii, Italy)",
+    "description_ko": "화산 폭발로 인한 갑작스러운 파괴의 현장. '탑' 카드의 예고 없는 위기, 구조의 붕괴, 그리고 격렬한 진실의 계시를 상징합니다."
+  },
+  "MA17": {
+    "name_ko": "별",
+    "background_ko": "아부 심벨 신전 (Abu Simbel Temple, Egypt)",
+    "description_ko": "사막의 별 아래 영원한 희망을 염원했던 신전. '별' 카드의 긍정적인 전망, 영감, 평온, 그리고 깊은 희망을 상징합니다."
+  },
+  "MA18": {
+    "name_ko": "달",
+    "background_ko": "스톤헨지 (Stonehenge, UK)",
+    "description_ko": "밤의 신비와 고대 의식이 얽힌 유적. '달' 카드의 환상, 잠재된 위험, 불안, 그리고 직관을 통한 탐색을 상징합니다."
+  },
+  "MA19": {
+    "name_ko": "태양",
+    "background_ko": "피라미드 (Pyramids of Giza)",
+    "description_ko": "사막의 뜨거운 태양 아래 영원한 성공을 추구한 건축물. '태양' 카드의 성공, 기쁨, 활력, 그리고 완전한 행복을 상징합니다."
+  },
+  "MA20": {
+    "name_ko": "심판",
+    "background_ko": "시스티나 예배당 (Sistine Chapel, Rome)",
+    "description_ko": "미켈란젤로의 '최후의 심판'이 있는 장소. '심판' 카드의 자기 평가, 부활, 용서, 그리고 중요한 결정의 순간을 상징합니다."
+  },
+  "MA21": {
+    "name_ko": "세계",
+    "background_ko": "로마 콜로세움 (Roman Colosseum)",
+    "description_ko": "역사적 성취와 통합을 상징하는 거대 원형 경기장. '세계' 카드의 완성, 성공, 성취, 그리고 모든 요소의 통합을 상징합니다."
+  }
+}

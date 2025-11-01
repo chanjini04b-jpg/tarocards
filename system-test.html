@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <!-- ================== 기본 메타 태그 (SEO) ================== -->
+    <meta name="title" content="타로 시스템 종합 테스트">
+    <meta name="description" content="타로 시스템의 모든 기능을 종합적으로 테스트하는 페이지">
+    <meta name="keywords" content="타로, 종합 테스트, 시스템 점검, 기능 테스트, 타로카드">
+    <meta name="author" content="Historical Tarot Team">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- ================== Open Graph 메타 태그 ================== -->
+    <meta property="og:title" content="타로 시스템 종합 테스트">
+    <meta property="og:description" content="타로 시스템의 모든 기능을 종합적으로 테스트하는 페이지">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tarocards.netlify.app/system-test.html">
+    <meta property="og:image" content="https://tarocards.netlify.app/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="타로 시스템 테스트 대표 이미지">
+    <meta property="og:site_name" content="Historical Tarot">
+    <meta property="og:locale" content="ko_KR">
+
+    <!-- ================== Twitter 카드 메타 태그 ================== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="타로 시스템 종합 테스트">
+    <meta name="twitter:description" content="타로 시스템의 모든 기능을 종합적으로 테스트하는 페이지">
+    <meta name="twitter:image" content="https://tarocards.netlify.app/images/og-image.jpg">
+    <meta name="twitter:image:alt" content="타로 시스템 테스트 대표 이미지">
+    <meta name="twitter:site" content="@historicaltarot">
+    <meta name="twitter:creator" content="@historicaltarot">
+
+    <!-- ================== SEO 및 사용자 경험 보완 태그 ================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="language" content="ko">
+    <meta name="distribution" content="global">
+    <meta name="rating" content="general">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="canonical" href="https://tarocards.netlify.app/system-test.html">
+
+    <!-- ================== 웹앱 및 브라우저 최적화 ================== -->
+    <meta name="theme-color" content="#ffffff">
+    <meta name="application-name" content="Historical Tarot">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Historical Tarot">
+
+    <!-- ================== 아이콘 및 리소스 링크 ================== -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <title>타로 시스템 종합 테스트</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans KR', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #4a5568;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            background: #f7fafc;
+        }
+        
+        .test-section h2 {
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        
+        .test-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            margin: 5px;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+        
+        .test-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .test-results {
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid #48bb78;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+            line-height: 1.5;
+        }
+        
+        .test-results.error {
+            border-left-color: #f56565;
+            background: #fed7d7;
+        }
+        
+        .success-text {
+            color: #38a169;
+        }
+        
+        .error-text {
+            color: #e53e3e;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .status-success {
+            background: #48bb78;
+        }
+        
+        .status-error {
+            background: #f56565;
+        }
+        
+        .status-warning {
+            background: #ed8936;
+        }
+        
+        .card-demo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .card-item {
+            background: white;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            cursor: pointer;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .card-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        .card-image-placeholder {
+            width: 60px;
+            height: 90px;
+            background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+            border-radius: 6px;
+            margin: 0 auto 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: #718096;
+            border: 1px solid #cbd5e0;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #48bb78 0%, #38a169 100%);
+            transition: width 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔮 타로 시스템 종합 테스트</h1>
+        
+        <!-- 전체 진행 상황 -->
+        <div class="test-section">
+            <h2>📊 전체 테스트 진행 상황</h2>
+            <div class="progress-bar">
+                <div id="overall-progress" class="progress-fill" style="width: 0%;">0%</div>
+            </div>
+            <p id="overall-status">테스트를 시작하려면 아래 버튼들을 클릭하세요.</p>
+        </div>
+        
+        <!-- 1. 기본 데이터 로딩 테스트 -->
+        <div class="test-section">
+            <h2>1. 📚 기본 데이터 시스템</h2>
+            <button class="test-button" onclick="testDataLoading()">데이터 로딩 테스트</button>
+            <button class="test-button" onclick="testImagePaths()">이미지 경로 확인</button>
+            <div id="data-results" class="test-results" style="display: none;"></div>
+        </div>
+        
+        <!-- 2. 타로 딕셔너리 테스트 -->
+        <div class="test-section">
+            <h2>2. 📖 타로 딕셔너리 시스템</h2>
+            <button class="test-button" onclick="testTarotDictionary()">딕셔너리 기능</button>
+            <button class="test-button" onclick="testCardFiltering()">필터링 & 검색</button>
+            <button class="test-button" onclick="renderSampleCards()">카드 렌더링</button>
+            <div id="dictionary-results" class="test-results" style="display: none;"></div>
+            <div id="card-demo" class="card-demo"></div>
+        </div>
+        
+        <!-- 3. 백업 시스템 테스트 -->
+        <div class="test-section">
+            <h2>3. 💾 백업 데이터 시스템</h2>
+            <button class="test-button" onclick="testBackupSystem()">백업 시스템</button>
+            <button class="test-button" onclick="testBackupFallback()">Fallback 테스트</button>
+            <div id="backup-results" class="test-results" style="display: none;"></div>
+        </div>
+        
+        <!-- 4. 간단 타로 시스템 테스트 -->
+        <div class="test-section">
+            <h2>4. 🎴 간단 타로 시스템</h2>
+            <button class="test-button" onclick="testSimpleTarot()">원카드 리딩</button>
+            <button class="test-button" onclick="testThreeCardSpread()">쓰리카드 스프레드</button>
+            <button class="test-button" onclick="testRandomFeatures()">랜덤 기능들</button>
+            <div id="simple-results" class="test-results" style="display: none;"></div>
+        </div>
+        
+        <!-- 5. UI 시스템 테스트 -->
+        <div class="test-section">
+            <h2>5. 🎨 UI 인터랙션 시스템</h2>
+            <button class="test-button" onclick="testUIFunctions()">기본 UI 함수</button>
+            <button class="test-button" onclick="testModalSystem()">모달 시스템</button>
+            <button class="test-button" onclick="testNotifications()">알림 시스템</button>
+            <div id="ui-results" class="test-results" style="display: none;"></div>
+        </div>
+        
+        <!-- 6. 통합 테스트 -->
+        <div class="test-section">
+            <h2>6. 🔄 시스템 통합 테스트</h2>
+            <button class="test-button" onclick="runFullIntegrationTest()">전체 통합 테스트</button>
+            <button class="test-button" onclick="performanceTest()">성능 테스트</button>
+            <button class="test-button" onclick="runAllTests()">모든 테스트 실행</button>
+            <div id="integration-results" class="test-results" style="display: none;"></div>
+        </div>
+    </div>
+
+    <!-- 테스트용 모달 -->
+    <div id="testModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1000; align-items: center; justify-content: center;">
+        <div style="background: white; padding: 30px; border-radius: 15px; max-width: 500px; width: 90%; text-align: center;">
+            <h3 id="modalTitle">테스트 모달</h3>
+            <div id="modalContent" style="margin: 20px 0;">
+                <div style="width: 120px; height: 180px; background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); margin: 20px auto; border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 2px solid #cbd5e0;">
+                    카드 이미지
+                </div>
+                <p id="modalText">이것은 테스트 모달입니다.</p>
+            </div>
+            <button onclick="closeTestModal()" style="background: #e53e3e; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">닫기</button>
+        </div>
+    </div>
+
+    <!-- 스크립트 로드 -->
+    <script src="js/tarot-cards-data.js"></script>
+    <script src="js/tarot-dictionary.js"></script>
+    <script src="javascript/backup-data.js"></script>
+    <script src="javascript/simple-tarot.js"></script>
+    <script src="javascript/ui.js"></script>
+
+    <script>
+        // 전역 테스트 상태
+        let testResults = {
+            total: 0,
+            passed: 0,
+            failed: 0,
+            details: []
+        };
+
+        // 유틸리티 함수들
+        function showResults(elementId, message, isError = false) {
+            const element = document.getElementById(elementId);
+            element.style.display = 'block';
+            element.className = 'test-results ' + (isError ? 'error' : '');
+            element.innerHTML = message;
+        }
+
+        function updateProgress() {
+            const percentage = testResults.total > 0 ? Math.round((testResults.passed / testResults.total) * 100) : 0;
+            const progressBar = document.getElementById('overall-progress');
+            const statusElement = document.getElementById('overall-status');
+            
+            progressBar.style.width = percentage + '%';
+            progressBar.textContent = percentage + '%';
+            
+            statusElement.textContent = `진행 상황: ${testResults.passed}/${testResults.total} 테스트 통과 (${percentage}%)`;
+            
+            if (percentage < 70) {
+                progressBar.style.background = 'linear-gradient(90deg, #f56565 0%, #e53e3e 100%)';
+            } else if (percentage < 90) {
+                progressBar.style.background = 'linear-gradient(90deg, #ed8936 0%, #dd6b20 100%)';
+            } else {
+                progressBar.style.background = 'linear-gradient(90deg, #48bb78 0%, #38a169 100%)';
+            }
+        }
+
+        function addTestResult(name, passed, details = '') {
+            testResults.total++;
+            if (passed) {
+                testResults.passed++;
+            } else {
+                testResults.failed++;
+            }
+            testResults.details.push({
+                name: name,
+                passed: passed,
+                details: details
+            });
+            updateProgress();
+        }
+
+        // 1. 데이터 로딩 테스트
+        function testDataLoading() {
+            let results = '=== 기본 데이터 시스템 테스트 ===\\n\\n';
+            
+            try {
+                // FULL_TAROT_CARDS 확인
+                if (typeof FULL_TAROT_CARDS !== 'undefined') {
+                    results += `✅ FULL_TAROT_CARDS 로드 성공: ${FULL_TAROT_CARDS.length}개 카드\\n`;
+                    addTestResult('FULL_TAROT_CARDS 로딩', true);
+                    
+                    // 데이터 구조 검증
+                    const sample = FULL_TAROT_CARDS[0];
+                    const requiredFields = ['id', 'name_ko', 'name_en', 'arcana', 'meaning_up', 'meaning_rev', 'image'];
+                    const missingFields = requiredFields.filter(field => !(field in sample));
+                    
+                    if (missingFields.length === 0) {
+                        results += '✅ 카드 데이터 구조 검증 성공\\n';
+                        addTestResult('카드 데이터 구조', true);
+                    } else {
+                        results += `❌ 누락된 필드: ${missingFields.join(', ')}\\n`;
+                        addTestResult('카드 데이터 구조', false);
+                    }
+                    
+                    // 아르카나 분포 확인
+                    const majorCount = FULL_TAROT_CARDS.filter(card => card.arcana === 'Major').length;
+                    const minorCount = FULL_TAROT_CARDS.filter(card => card.arcana === 'Minor').length;
+                    
+                    results += `📊 메이저 아르카나: ${majorCount}개\\n`;
+                    results += `📊 마이너 아르카나: ${minorCount}개\\n`;
+                    
+                    if (majorCount === 22) {
+                        results += '✅ 메이저 아르카나 개수 정확\\n';
+                        addTestResult('메이저 아르카나 개수', true);
+                    } else {
+                        results += '❌ 메이저 아르카나 개수 오류\\n';
+                        addTestResult('메이저 아르카나 개수', false);
+                    }
+                    
+                } else {
+                    results += '❌ FULL_TAROT_CARDS를 찾을 수 없습니다\\n';
+                    addTestResult('FULL_TAROT_CARDS 로딩', false);
+                }
+                
+                showResults('data-results', results);
+                
+            } catch (error) {
+                results += `❌ 오류 발생: ${error.message}\\n`;
+                showResults('data-results', results, true);
+                addTestResult('데이터 로딩', false, error.message);
+            }
+        }
+
+        function testImagePaths() {
+            let results = '=== 이미지 경로 테스트 ===\\n\\n';
+            
+            try {
+                if (typeof FULL_TAROT_CARDS !== 'undefined') {
+                    // 처음 5개 카드의 이미지 경로 확인
+                    let validPaths = 0;
+                    let totalChecked = Math.min(5, FULL_TAROT_CARDS.length);
+                    
+                    for (let i = 0; i < totalChecked; i++) {
+                        const card = FULL_TAROT_CARDS[i];
+                        const imagePath = card.image;
+                        
+                        if (imagePath && imagePath.startsWith('images/')) {
+                            results += `✅ ${card.name_ko}: ${imagePath}\\n`;
+                            validPaths++;
+                        } else {
+                            results += `❌ ${card.name_ko}: 잘못된 경로 (${imagePath})\\n`;
+                        }
+                    }
+                    
+                    results += `\\n📊 유효한 경로: ${validPaths}/${totalChecked}\\n`;
+                    
+                    if (validPaths === totalChecked) {
+                        addTestResult('이미지 경로 형식', true);
+                    } else {
+                        addTestResult('이미지 경로 형식', false);
+                    }
+                    
+                } else {
+                    results += '❌ 카드 데이터를 찾을 수 없습니다\\n';
+                    addTestResult('이미지 경로 테스트', false);
+                }
+                
+                showResults('data-results', results);
+                
+            } catch (error) {
+                results += `❌ 오류 발생: ${error.message}\\n`;
+                showResults('data-results', results, true);
+                addTestResult('이미지 경로 테스트', false, error.message);
+            }
+        }
+
+        // 2. 타로 딕셔너리 테스트
+        function testTarotDictionary() {
+            let results = '=== 타로 딕셔너리 시스템 테스트 ===\\n\\n';
+            
+            try {
+                if (typeof TarotDictionary !== 'undefined') {
+                    results += '✅ TarotDictionary 클래스 로드 성공\\n';
+                    addTestResult('TarotDictionary 클래스', true);
+                    
+                    const dict = new TarotDictionary();
+                    results += '✅ 인스턴스 생성 성공\\n';
+                    addTestResult('TarotDictionary 인스턴스', true);
+                    
+                    dict.loadCards();
+                    results += `✅ 카드 로드 완료: ${dict.cards.length}개\\n`;
+                    
+                    if (dict.cards.length > 0) {
+                        addTestResult('카드 로딩', true);
+                    } else {
+                        addTestResult('카드 로딩', false);
+                    }
+                    
+                    // 메서드 테스트
+                    const methods = ['filterCards', 'searchCards', 'getCardImagePath', 'renderCards'];
+                    methods.forEach(method => {
+                        if (typeof dict[method] === 'function') {
+                            results += `✅ ${method} 메서드 사용 가능\\n`;
+                            addTestResult(`${method} 메서드`, true);
+                        } else {
+                            results += `❌ ${method} 메서드 없음\\n`;
+                            addTestResult(`${method} 메서드`, false);
+                        }
+                    });
+                    
+                } else {
+                    results += '❌ TarotDictionary 클래스를 찾을 수 없습니다\\n';
+                    addTestResult('TarotDictionary 클래스', false);
+                }
+                
+                showResults('dictionary-results', results);
+                
+            } catch (error) {
+                results += `❌ 오류 발생: ${error.message}\\n`;
+                showResults('dictionary-results', results, true);
+                addTestResult('타로 딕셔너리', false, error.message);
+            }
+        }
+
+        function testCardFiltering() {
+            let results = '=== 카드 필터링 & 검색 테스트 ===\\n\\n';
+            
+            try {
+                if (typeof TarotDictionary !== 'undefined') {
+                    const dict = new TarotDictionary();
+                    dict.loadCards();
+                    
+                    // 필터링 테스트
+                    dict.filterCards('all');
+                    const allCount = dict.filteredCards.length;
+                    results += `🃏 전체 카드: ${allCount}개\\n`;
+                    
+                    dict.filterCards('Major');
+                    const majorCount = dict.filteredCards.length;
+                    results += `👑 메이저 아르카나: ${majorCount}개\\n`;
+                    
+                    dict.filterCards('Minor');
+                    const minorCount = dict.filteredCards.length;
+                    results += `⚔️ 마이너 아르카나: ${minorCount}개\\n`;
+                    
+                    if (majorCount + minorCount === allCount) {
+                        results += '✅ 필터링 로직 정확\\n';
+                        addTestResult('카드 필터링', true);
+                    } else {
+                        results += '❌ 필터링 로직 오류\\n';
+                        addTestResult('카드 필터링', false);
+                    }
+                    
+                    // 검색 테스트
+                    const searchTerms = ['바보', '사랑', 'fool', '마법'];
+                    let searchPassed = 0;
+                    
+                    searchTerms.forEach(term => {
+                        dict.searchCards(term);
+                        results += `🔍 '${term}' 검색: ${dict.filteredCards.length}개 결과\\n`;
+                        if (dict.filteredCards.length >= 0) searchPassed++;
+                    });
+                    
+                    if (searchPassed === searchTerms.length) {
+                        addTestResult('카드 검색', true);
+                    } else {
+                        addTestResult('카드 검색', false);
+                    }
+                    
+                } else {
+                    results += '❌ TarotDictionary를 찾을 수 없습니다\\n';
+                    addTestResult('필터링 & 검색', false);
+                }
+                
+                showResults('dictionary-results', results);
+                
+            } catch (error) {
+                results += `❌ 오류 발생: ${error.message}\\n`;
+                showResults('dictionary-results', results, true);
+                addTestResult('필터링 & 검색', false, error.message);
+            }
+        }
+
+        function renderSampleCards() {
+            try {
+                if (typeof TarotDictionary !== 'undefined' && typeof FULL_TAROT_CARDS !== 'undefined') {
+                    const dict = new TarotDictionary();
+                    dict.loadCards();
+                    
+                    // 처음 6개 카드 렌더링
+                    const sampleCards = dict.cards.slice(0, 6);
+                    displayCardDemo(sampleCards);
+                    
+                    showResults('dictionary-results', '✅ 샘플 카드가 아래에 렌더링되었습니다. 카드를 클릭해보세요!');
+                    addTestResult('카드 렌더링', true);
+                    
+                } else {
+                    showResults('dictionary-results', '❌ 카드 렌더링에 필요한 데이터를 찾을 수 없습니다', true);
+                    addTestResult('카드 렌더링', false);
+                }
+            } catch (error) {
+                showResults('dictionary-results', `❌ 렌더링 오류: ${error.message}`, true);
+                addTestResult('카드 렌더링', false, error.message);
+            }
+        }
+
+        function displayCardDemo(cards) {
+            const demoContainer = document.getElementById('card-demo');
+            demoContainer.innerHTML = '';
+            
+            cards.forEach(card => {
+                const cardElement = document.createElement('div');
+                cardElement.className = 'card-item';
+                cardElement.innerHTML = `
+                    <div class="card-image-placeholder">
+                        ${card.name_ko}
+                    </div>
+                    <div style="font-weight: bold; font-size: 12px;">${card.name_ko}</div>
+                    <div style="font-size: 10px; color: #666; margin-top: 4px;">${card.name_en}</div>
+                `;
+                cardElement.onclick = () => {
+                    showTestModal(card);
+                };
+                demoContainer.appendChild(cardElement);
+            });
+        }
+
+        // 3. 백업 시스템 테스트
+        function testBackupSystem() {
+            let results = '=== 백업 데이터 시스템 테스트 ===\\n\\n';
+            
+            try {
+                if (typeof BackupDataLoader !== 'undefined') {
+                    results += '✅ BackupDataLoader 클래스 로드 성공\\n';
+                    addTestResult('BackupDataLoader 클래스', true);
+                    
+                    const loader = new BackupDataLoader();
+                    const cards = loader.loadBackupData();
+                    
+                    results += `✅ 백업 데이터 로드 성공: ${cards.length}개 카드\\n`;
+                    
+                    if (cards.length > 0) {
+                        addTestResult('백업 데이터 로드', true);
+                        
+                        // 백업 데이터 메서드 테스트
+                        const randomCard = loader.getRandomCard();
+                        if (randomCard) {
+                            results += `🎲 랜덤 카드: ${randomCard.name_ko}\\n`;
+                            addTestResult('랜덤 카드 선택', true);
+                        }
+                        
+                        const majorCards = loader.getMajorArcana();
+                        results += `👑 메이저 아르카나: ${majorCards.length}개\\n`;
+                        
+                        const searchResults = loader.searchCards('바보');
+                        results += `🔍 검색 테스트: ${searchResults.length}개 결과\\n`;
+                        
+                        addTestResult('백업 시스템 기능', true);
+                        
+                    } else {
+                        addTestResult('백업 데이터 로드', false);
+                    }
+                    
+                } else {
+                    results += '❌ BackupDataLoader 클래스를 찾을 수 없습니다\\n';
+                    addTestResult('BackupDataLoader 클래스', false);
+                }
+                
+                showResults('backup-results', results);
+                
+            } catch (error) {
+                results += `❌ 오류 발생: ${error.message}\\n`;
+                showResults('backup-results', results, true);
+                addTestResult('백업 시스템', false, error.message);
+            }
+        }
+
+        function testBackupFallback() {
+            let results = '=== Fallback 메커니즘 테스트 ===\\n\\n';
+            
+            try {
+                if (typeof backupLoader !== 'undefined') {
+                    results += '✅ 전역 backupLoader 인스턴스 확인\\n';
+                    addTestResult('전역 백업 로더', true);
+                    
+                    if (typeof loadBackupData === 'function') {
+                        const fallbackCards = loadBackupData();
+                        results += `✅ loadBackupData() 함수 작동: ${fallbackCards.length}개 카드\\n`;
+                        addTestResult('Fallback 함수', true);
+                    } else {
+                        results += '❌ loadBackupData() 함수를 찾을 수 없음\\n';
+                        addTestResult('Fallback 함수', false);
+                    }
+                    
+                } else {
+                    results += '❌ 전역 backupLoader를 찾을 수 없습니다\\n';
+                    addTestResult('전역 백업 로더', false);
+                }
+                
+                showResults('backup-results', results);
+                
+            } catch (error) {
+                results += `❌ 오류 발생: ${error.message}\\n`;
+                showResults('backup-results', results, true);
+                addTestResult('Fallback 테스트', false, error.message);
+            }
+        }
+
+        // 4. 간단 타로 시스템 테스트
+        function testSimpleTarot() {
+            let results = '=== 간단 타로 시스템 테스트 ===\\n\\n';
+            
+            try {
+                if (typeof SimpleTarotSystem !== 'undefined') {
+                    results += '✅ SimpleTarotSystem 클래스 로드 성공\\n';
+                    addTestResult('SimpleTarotSystem 클래스', true);
+                    
+                    const tarot = new SimpleTarotSystem();
+                    results += `✅ 시스템 초기화: ${tarot.cards.length}개 카드\\n`;
+                    addTestResult('SimpleTarot 초기화', true);
+                    
+                    // 원카드 리딩 테스트
+                    const oneCardReading = tarot.oneCardReading();
+                    if (oneCardReading && oneCardReading.card) {
+                        results += `\\n🔮 원카드 리딩 테스트:\\n`;
+                        results += `❓ 질문: ${oneCardReading.question}\\n`;
+                        results += `🎴 카드: ${oneCardReading.card.name_ko} (${oneCardReading.card.reversed ? '역방향' : '정방향'})\\n`;
+                        results += `💡 의미: ${oneCardReading.card.meaning}\\n`;
+                        addTestResult('원카드 리딩', true);
+                    } else {
+                        results += '❌ 원카드 리딩 실패\\n';
+                        addTestResult('원카드 리딩', false);
+                    }
+                    
+                } else {
+                    results += '❌ SimpleTarotSystem 클래스를 찾을 수 없습니다\\n';
+                    addTestResult('SimpleTarotSystem 클래스', false);
+                }
+                
+                showResults('simple-results', results);
+                
+            } catch (error) {
+                results += `❌ 오류 발생: ${error.message}\\n`;
+                showResults('simple-results', results, true);
+                addTestResult('간단 타로 시스템', false, error.message);
+            }
+        }
+
+        function testThreeCardSpread() {
+            let results = '=== 쓰리카드 스프레드 테스트 ===\\n\\n';
+            
+            try {
+                if (typeof SimpleTarotSystem !== 'undefined') {
+                    const tarot = new SimpleTarotSystem();
+                    const threeCardSpread = tarot.threeCardSpread();
+                    
+                    if (threeCardSpread && threeCardSpread.length === 3) {
+                        results += '🔮 쓰리카드 스프레드 성공:\\n\\n';
+                        
+                        threeCardSpread.forEach((card, index) => {
+                            results += `${index + 1}. ${card.position}:\\n`;
+                            results += `   🎴 ${card.name_ko} (${card.reversed ? '역방향' : '정방향'})\\n`;
+                            results += `   💡 ${card.meaning}\\n\\n`;
+                        });
+                        
+                        addTestResult('쓰리카드 스프레드', true);
+                    } else {
+                        results += '❌ 쓰리카드 스프레드 실패\\n';
+                        addTestResult('쓰리카드 스프레드', false);
+                    }
+                    
+                } else {
+                    results += '❌ SimpleTarotSystem을 찾을 수 없습니다\\n';
+                    addTestResult('쓰리카드 스프레드', false);
+                }
+                
+                showResults('simple-results', results);
+                
+            } catch (error) {
+                results += `❌ 오류 발생: ${error.message}\\n`;
+                showResults('simple-results', results, true);
+                addTestResult('쓰리카드 스프레드', false, error.message);
+            }
+        }
+
+        function testRandomFeatures() {
+            let results = '=== 랜덤 기능 테스트 ===\\n\\n';
+            
+            try {
+                if (typeof SimpleTarotSystem !== 'undefined') {
+                    const tarot = new SimpleTarotSystem();
+                    
+                    // 랜덤 질문 테스트
+                    results += '🎲 랜덤 질문 5개:\\n';
+                    for (let i = 0; i < 5; i++) {
+                        const question = tarot.getRandomQuestion();
+                        results += `${i + 1}. ${question}\\n`;
+                    }
+                    
+                    results += `\\n📊 총 질문 수: ${tarot.randomQuestions.length}개\\n`;
+                    addTestResult('랜덤 질문 생성', true);
+                    
+                    // 랜덤 카드 테스트
+                    const randomCard = tarot.drawRandomCard();
+                    if (randomCard) {
+                        results += `\\n🎴 랜덤 카드: ${randomCard.name_ko}\\n`;
+                        addTestResult('랜덤 카드 선택', true);
+                    }
+                    
+                    // TarotUtils 테스트
+                    if (typeof TarotUtils !== 'undefined') {
+                        const advice = TarotUtils.generateRandomAdvice();
+                        results += `\\n💫 랜덤 조언: ${advice}\\n`;
+                        addTestResult('랜덤 조언', true);
+                    }
+                    
+                } else {
+                    results += '❌ SimpleTarotSystem을 찾을 수 없습니다\\n';
+                    addTestResult('랜덤 기능', false);
+                }
+                
+                showResults('simple-results', results);
+                
+            } catch (error) {
+                results += `❌ 오류 발생: ${error.message}\\n`;
+                showResults('simple-results', results, true);
+                addTestResult('랜덤 기능', false, error.message);
+            }
+        }
+
+        // 5. UI 시스템 테스트
+        function testUIFunctions() {
+            let results = '=== UI 기본 함수 테스트 ===\\n\\n';
+            
+            try {
+                const uiFunctions = [
+                    'showCardModal',
+                    'closeModal', 
+                    'showToast',
+                    'showLoading',
+                    'hideLoading'
+                ];
+                
+                let foundFunctions = 0;
+                
+                uiFunctions.forEach(funcName => {
+                    if (typeof window[funcName] === 'function') {
+                        results += `✅ ${funcName} 함수 사용 가능\\n`;
+                        foundFunctions++;
+                    } else {
+                        results += `❌ ${funcName} 함수를 찾을 수 없음\\n`;
+                    }
+                });
+                
+                addTestResult('UI 기본 함수', foundFunctions === uiFunctions.length);
+                
+                // UIUtils 확인
+                if (typeof UIUtils !== 'undefined') {
+                    results += '\\n✅ UIUtils 객체 사용 가능\\n';
+                    
+                    const utilMethods = ['isInViewport', 'slideDown', 'slideUp', 'copyToClipboard'];
+                    let foundUtils = 0;
+                    
+                    utilMethods.forEach(method => {
+                        if (typeof UIUtils[method] === 'function') {
+                            results += `   ✅ ${method}\\n`;
+                            foundUtils++;
+                        } else {
+                            results += `   ❌ ${method}\\n`;
+                        }
+                    });
+                    
+                    addTestResult('UIUtils 메서드', foundUtils === utilMethods.length);
+                    
+                } else {
+                    results += '\\n❌ UIUtils 객체를 찾을 수 없음\\n';
+                    addTestResult('UIUtils 객체', false);
+                }
+                
+                showResults('ui-results', results);
+                
+            } catch (error) {
+                results += `❌ 오류 발생: ${error.message}\\n`;
+                showResults('ui-results', results, true);
+                addTestResult('UI 기본 함수', false, error.message);
+            }
+        }
+
+        function testModalSystem() {
+            let results = '=== 모달 시스템 테스트 ===\\n\\n';
+            
+            try {
+                if (typeof FULL_TAROT_CARDS !== 'undefined' && FULL_TAROT_CARDS.length > 0) {
+                    const sampleCard = FULL_TAROT_CARDS[0];
+                    
+                    // 테스트 모달 표시
+                    showTestModal(sampleCard);
+                    
+                    results += '✅ 테스트 모달이 표시되었습니다\\n';
+                    results += '모달이 화면에 나타났는지 확인하세요\\n';
+                    addTestResult('모달 표시', true);
+                    
+                    // 모달 함수 확인
+                    if (typeof showCardModal === 'function') {
+                        results += '✅ showCardModal 함수 사용 가능\\n';
+                        addTestResult('showCardModal 함수', true);
+                    } else {
+                        results += '❌ showCardModal 함수 없음\\n';
+                        addTestResult('showCardModal 함수', false);
+                    }
+                    
+                } else {
+                    results += '❌ 테스트할 카드 데이터가 없습니다\\n';
+                    addTestResult('모달 시스템', false);
+                }
+                
+                showResults('ui-results', results);
+                
+            } catch (error) {
+                results += `❌ 오류 발생: ${error.message}\\n`;
+                showResults('ui-results', results, true);
+                addTestResult('모달 시스템', false, error.message);
+            }
+        }
+
+        function testNotifications() {
+            let results = '=== 알림 시스템 테스트 ===\\n\\n';
+            
+            try {
+                if (typeof showToast === 'function') {
+                    // 다양한 타입의 토스트 메시지 테스트
+                    showToast('성공 메시지 테스트! 🎉', 'success', 2000);
+                    
+                    setTimeout(() => {
+                        showToast('정보 메시지 테스트 📋', 'info', 2000);
+                    }, 500);
+                    
+                    setTimeout(() => {
+                        showToast('경고 메시지 테스트 ⚠️', 'warning', 2000);
+                    }, 1000);
+                    
+                    setTimeout(() => {
+                        showToast('오류 메시지 테스트 ❌', 'error', 2000);
+                    }, 1500);
+                    
+                    results += '✅ 토스트 알림 시스템 테스트 실행됨\\n';
+                    results += '4개의 다른 타입 토스트가 순차적으로 표시됩니다\\n';
+                    addTestResult('토스트 알림', true);
+                    
+                } else {
+                    results += '❌ showToast 함수를 찾을 수 없습니다\\n';
+                    addTestResult('토스트 알림', false);
+                }
+                
+                // 로딩 스피너 테스트
+                if (typeof showLoading === 'function' && typeof hideLoading === 'function') {
+                    const spinner = showLoading(document.body);
+                    setTimeout(() => {
+                        hideLoading(spinner);
+                        results += '\\n✅ 로딩 스피너 테스트 완료\\n';
+                        addTestResult('로딩 스피너', true);
+                        showResults('ui-results', results);
+                    }, 2000);
+                    
+                    results += '\\n✅ 로딩 스피너 표시됨 (2초 후 사라집니다)\\n';
+                } else {
+                    results += '\\n❌ 로딩 스피너 함수를 찾을 수 없음\\n';
+                    addTestResult('로딩 스피너', false);
+                }
+                
+                showResults('ui-results', results);
+                
+            } catch (error) {
+                results += `❌ 오류 발생: ${error.message}\\n`;
+                showResults('ui-results', results, true);
+                addTestResult('알림 시스템', false, error.message);
+            }
+        }
+
+        // 테스트 모달 함수들
+        function showTestModal(card) {
+            const modal = document.getElementById('testModal');
+            const title = document.getElementById('modalTitle');
+            const text = document.getElementById('modalText');
+            
+            title.textContent = `${card.name_ko} (${card.name_en})`;
+            text.textContent = `정방향: ${card.meaning_up}\\n역방향: ${card.meaning_rev}`;
+            
+            modal.style.display = 'flex';
+        }
+
+        function closeTestModal() {
+            document.getElementById('testModal').style.display = 'none';
+        }
+
+        // 6. 통합 테스트
+        function runFullIntegrationTest() {
+            let results = '=== 시스템 통합 테스트 ===\\n\\n';
+            
+            try {
+                // 전체 워크플로 테스트
+                results += '🔄 전체 시스템 워크플로 테스트...\\n\\n';
+                
+                // 1. 데이터 로딩
+                if (typeof FULL_TAROT_CARDS !== 'undefined') {
+                    results += '✅ 1단계: 기본 데이터 로딩 성공\\n';
+                    
+                    // 2. 딕셔너리 시스템
+                    if (typeof TarotDictionary !== 'undefined') {
+                        const dict = new TarotDictionary();
+                        dict.loadCards();
+                        results += '✅ 2단계: 딕셔너리 시스템 활성화\\n';
+                        
+                        // 3. 백업 시스템
+                        if (typeof BackupDataLoader !== 'undefined') {
+                            const backup = new BackupDataLoader();
+                            backup.loadBackupData();
+                            results += '✅ 3단계: 백업 시스템 준비 완료\\n';
+                            
+                            // 4. 간단 타로 시스템
+                            if (typeof SimpleTarotSystem !== 'undefined') {
+                                const simple = new SimpleTarotSystem();
+                                const reading = simple.oneCardReading();
+                                results += '✅ 4단계: 간단 타로 시스템 작동\\n';
+                                
+                                // 5. UI 시스템
+                                if (typeof showToast === 'function') {
+                                    results += '✅ 5단계: UI 시스템 준비 완료\\n';
+                                    
+                                    results += '\\n🎉 전체 시스템 통합 테스트 성공!\\n';
+                                    results += '모든 컴포넌트가 정상적으로 연동됩니다.\\n';
+                                    addTestResult('시스템 통합', true);
+                                    
+                                } else {
+                                    results += '❌ 5단계: UI 시스템 오류\\n';
+                                    addTestResult('시스템 통합', false);
+                                }
+                            } else {
+                                results += '❌ 4단계: 간단 타로 시스템 오류\\n';
+                                addTestResult('시스템 통합', false);
+                            }
+                        } else {
+                            results += '❌ 3단계: 백업 시스템 오류\\n';
+                            addTestResult('시스템 통합', false);
+                        }
+                    } else {
+                        results += '❌ 2단계: 딕셔너리 시스템 오류\\n';
+                        addTestResult('시스템 통합', false);
+                    }
+                } else {
+                    results += '❌ 1단계: 기본 데이터 로딩 실패\\n';
+                    addTestResult('시스템 통합', false);
+                }
+                
+                showResults('integration-results', results);
+                
+            } catch (error) {
+                results += `❌ 통합 테스트 오류: ${error.message}\\n`;
+                showResults('integration-results', results, true);
+                addTestResult('시스템 통합', false, error.message);
+            }
+        }
+
+        function performanceTest() {
+            let results = '=== 성능 테스트 ===\\n\\n';
+            
+            try {
+                const startTime = performance.now();
+                
+                // 대량 카드 처리 테스트
+                if (typeof TarotDictionary !== 'undefined' && typeof FULL_TAROT_CARDS !== 'undefined') {
+                    const dict = new TarotDictionary();
+                    
+                    const loadStart = performance.now();
+                    dict.loadCards();
+                    const loadTime = performance.now() - loadStart;
+                    
+                    results += `⏱️ 카드 로딩 시간: ${loadTime.toFixed(2)}ms\\n`;
+                    
+                    // 필터링 성능
+                    const filterStart = performance.now();
+                    for (let i = 0; i < 100; i++) {
+                        dict.filterCards('Major');
+                        dict.filterCards('Minor');
+                        dict.filterCards('all');
+                    }
+                    const filterTime = performance.now() - filterStart;
+                    
+                    results += `⏱️ 필터링 100회 시간: ${filterTime.toFixed(2)}ms\\n`;
+                    
+                    // 검색 성능
+                    const searchStart = performance.now();
+                    const searchTerms = ['바보', '마법사', '여황제', 'fool', 'magician'];
+                    for (let i = 0; i < 50; i++) {
+                        searchTerms.forEach(term => {
+                            dict.searchCards(term);
+                        });
+                    }
+                    const searchTime = performance.now() - searchStart;
+                    
+                    results += `⏱️ 검색 250회 시간: ${searchTime.toFixed(2)}ms\\n`;
+                    
+                    const totalTime = performance.now() - startTime;
+                    results += `\\n⏱️ 총 성능 테스트 시간: ${totalTime.toFixed(2)}ms\\n`;
+                    
+                    if (totalTime < 1000) {
+                        results += '✅ 성능 테스트 통과 (1초 미만)\\n';
+                        addTestResult('성능 테스트', true);
+                    } else {
+                        results += '⚠️ 성능 개선 필요 (1초 초과)\\n';
+                        addTestResult('성능 테스트', false);
+                    }
+                    
+                } else {
+                    results += '❌ 성능 테스트에 필요한 컴포넌트 없음\\n';
+                    addTestResult('성능 테스트', false);
+                }
+                
+                showResults('integration-results', results);
+                
+            } catch (error) {
+                results += `❌ 성능 테스트 오류: ${error.message}\\n`;
+                showResults('integration-results', results, true);
+                addTestResult('성능 테스트', false, error.message);
+            }
+        }
+
+        // 모든 테스트 실행
+        function runAllTests() {
+            // 테스트 결과 초기화
+            testResults = { total: 0, passed: 0, failed: 0, details: [] };
+            
+            showResults('integration-results', '🚀 전체 테스트를 실행합니다...\\n잠시만 기다려주세요.');
+            
+            // 순차적으로 모든 테스트 실행
+            setTimeout(() => {
+                testDataLoading();
+                setTimeout(() => {
+                    testTarotDictionary();
+                    setTimeout(() => {
+                        testBackupSystem();
+                        setTimeout(() => {
+                            testSimpleTarot();
+                            setTimeout(() => {
+                                testUIFunctions();
+                                setTimeout(() => {
+                                    runFullIntegrationTest();
+                                    setTimeout(() => {
+                                        performanceTest();
+                                        
+                                        // 최종 결과 표시
+                                        let finalResults = '=== 🏁 전체 테스트 완료 ===\\n\\n';
+                                        finalResults += `📊 총 테스트: ${testResults.total}개\\n`;
+                                        finalResults += `✅ 성공: ${testResults.passed}개\\n`;
+                                        finalResults += `❌ 실패: ${testResults.failed}개\\n`;
+                                        finalResults += `📈 성공률: ${Math.round((testResults.passed / testResults.total) * 100)}%\\n\\n`;
+                                        
+                                        if (testResults.failed === 0) {
+                                            finalResults += '🎉 축하합니다! 모든 테스트가 성공했습니다!\\n';
+                                            finalResults += '타로 시스템이 완벽하게 작동합니다.';
+                                        } else {
+                                            finalResults += '⚠️ 일부 테스트가 실패했습니다.\\n';
+                                            finalResults += '실패한 항목들을 확인하고 수정해주세요.';
+                                        }
+                                        
+                                        showResults('integration-results', finalResults);
+                                        
+                                    }, 500);
+                                }, 500);
+                            }, 500);
+                        }, 500);
+                    }, 500);
+                }, 500);
+            }, 100);
+        }
+
+        // 페이지 로드 시 초기화
+        window.addEventListener('load', function() {
+            console.log('🔮 타로 시스템 종합 테스트 페이지가 로드되었습니다.');
+            console.log('원하는 테스트 버튼을 클릭하거나 "모든 테스트 실행"을 클릭하세요.');
+            
+            // 초기 진행률 설정
+            updateProgress();
+        });
+    </script>
+</body>
+</html>

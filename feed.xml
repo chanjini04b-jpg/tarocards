@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Historical Tarot - 타로카드 서비스</title>
+  <link href="https://tarocards.netlify.app/" rel="alternate"/>
+  <link href="https://tarocards.netlify.app/feed.xml" rel="self"/>
+  <updated>2025-10-29T00:00:00+09:00</updated>
+  <id>https://tarocards.netlify.app/</id>
+  <author>
+    <name>Historical Tarot</name>
+    <email>contact@tarocards.netlify.app</email>
+  </author>
+  <subtitle>고대 문명과 현대 심리학이 만나는 신비로운 타로카드 리딩, 카드 해석, 사전, 운세 등 다양한 타로 서비스의 최신 소식과 업데이트를 제공합니다.</subtitle>
+  <entry>
+    <title>타로카드 리딩 서비스 오픈</title>
+    <link href="https://tarocards.netlify.app/"/>
+    <id>https://tarocards.netlify.app/</id>
+    <updated>2025-10-29T00:00:00+09:00</updated>
+    <summary>YES/NO 타로, 일일운세, 꿈해석, 타로 사전 등 다양한 타로카드 서비스를 제공합니다.</summary>
+  </entry>
+  <entry>
+    <title>타로카드 사전 업데이트</title>
+    <link href="https://tarocards.netlify.app/#dictionary"/>
+    <id>https://tarocards.netlify.app/#dictionary</id>
+    <updated>2025-10-29T00:00:00+09:00</updated>
+    <summary>78장 모든 타로카드의 상세한 의미와 해석을 전문가급 지식으로 제공합니다.</summary>
+  </entry>
+  <entry>
+    <title>신규 스프레드 기능 추가</title>
+    <link href="https://tarocards.netlify.app/#cards"/>
+    <id>https://tarocards.netlify.app/#cards</id>
+    <updated>2025-10-29T00:00:00+09:00</updated>
+    <summary>원카드, 삼각스프레드, 별자리스프레드 등 다양한 카드 뽑기 기능이 추가되었습니다.</summary>
+  </entry>
+</feed>
